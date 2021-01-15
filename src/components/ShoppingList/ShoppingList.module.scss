@@ -1,0 +1,18 @@
+.ShoppingList {
+  display: flex;
+  flex-direction: column;
+  
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+  background-color: #FFF0DE;
+  width: 32rem;
+  height: 100vh;
+  padding: 2.5rem 3rem;
+}
+
+.Categories {
+  flex: 1;
+  overflow-y: auto;
+}

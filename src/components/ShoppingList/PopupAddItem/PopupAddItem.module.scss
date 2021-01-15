@@ -1,0 +1,27 @@
+.PopupAddItem {
+  display: flex;
+  align-items: center;
+  
+  background-color: #80485B;
+  border-radius: 2rem;
+  width: 100%;
+  height: 11rem;
+  padding: .4rem .7rem;
+  color: white;
+  font-weight: 700;
+}
+
+.BottleIcon {
+  align-self: flex-start;
+  height: 12rem;
+  transform: translateY(-2.5rem);
+  margin-right: 1rem;
+}
+
+.PopupControls {
+  
+  span {
+    display: inline-block;
+    margin-bottom: .7rem;
+  }
+}

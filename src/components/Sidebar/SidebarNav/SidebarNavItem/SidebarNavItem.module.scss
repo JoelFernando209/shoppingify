@@ -1,0 +1,48 @@
+.SidebarNavItem {
+  position: relative;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  cursor: pointer;
+  transition: all .3s;
+  
+  &:hover {
+    background-color: darken(white, 5%);
+  }
+  
+  &:hover .hoverItem {
+    display: flex;
+    opacity: .8;
+    visibility: visible;
+  }
+  
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.hoverItem {
+  position: absolute;
+  top: -1rem;
+  right: -60%;
+  
+  height: 3rem;
+  background-color: #454545;
+  font-size: 1rem;
+  
+  padding: 0 1rem;
+  padding-top: .5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+  
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 75%, 23% 100%, 25% 75%, 0% 75%);
+}

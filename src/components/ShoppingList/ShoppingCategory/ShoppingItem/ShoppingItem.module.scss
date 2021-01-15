@@ -1,0 +1,55 @@
+.ShoppingItem {
+  display: flex;
+  align-items: center;
+  
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.ShoppingItemLabel {
+  display: flex;
+  align-items: center;
+}
+
+.ShoppingItemCount {
+  margin-left: auto;
+}
+
+.ValueItem {
+  display: inline-block;
+  margin-left: 2.7rem;
+  user-select: none;
+  font-weight: 600;
+}
+
+.Checkbox {
+  position: relative;
+  width: 0;
+  height: 1.7rem;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 2px solid #F9A109;
+    border-radius: .4rem;
+    cursor: pointer;
+    color: #F9A109;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &:checked::before {
+    content: '\2713';
+  }
+  
+  &:checked + .ValueItem {
+    text-decoration: line-through;
+  }
+}

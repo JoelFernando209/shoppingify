@@ -1,0 +1,16 @@
+.Category {
+  margin: 1rem 0;
+  
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.Title {
+  display: inline-block;
+  color: black;
+  opacity: .6;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}

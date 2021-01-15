@@ -1,0 +1,34 @@
+.Btn {
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+  font-weight: 700;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+.white {
+  background-color: white;
+  color: #34333A;
+  
+  &:hover {
+    background-color: darken(white, 5%);
+  }
+  
+  &:active {
+    background-color: darken(white, 15%);
+  }
+}
+
+.cyan {
+  background-color: #56CCF2;
+  color: white;
+}

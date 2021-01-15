@@ -1,0 +1,21 @@
+.ShoppingHeader {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  
+  font-weight: 600;
+  
+  font-size: 2rem;
+}
+
+.CreateIcon {
+  margin-left: auto;
+  opacity: .6;
+  
+  transition: all .3s;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: .8;
+  }
+}

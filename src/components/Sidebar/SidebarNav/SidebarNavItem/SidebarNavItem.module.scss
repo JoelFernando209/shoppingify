@@ -46,3 +46,12 @@
   
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 75%, 23% 100%, 25% 75%, 0% 75%);
 }
+
+.nav {
+  border-left: 5px solid transparent;
+}
+
+.navActive {
+  border-left: 5px solid #F9A109;
+  border-radius: 3px;
+}

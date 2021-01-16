@@ -10,9 +10,9 @@ import SidebarNavItem from './SidebarNavItem/SidebarNavItem';
 
 const SidebarNav = () => (
   <div className={classes.SidebarNav}>
-    <SidebarNavItem image={ListIcon} hoverItem='items' />
-    <SidebarNavItem image={HistoryIcon} hoverItem='history' />
-    <SidebarNavItem image={StatisticsIcon} hoverItem='statistics' />
+    <SidebarNavItem image={ListIcon} hoverItem='items' path='/' />
+    <SidebarNavItem image={HistoryIcon} hoverItem='history' path='/history' />
+    <SidebarNavItem image={StatisticsIcon} hoverItem='statistics' path='/statistics' />
   </div>
 );
 

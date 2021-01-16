@@ -1,0 +1,17 @@
+.ItemsCategory {
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.titleCategory {
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.ItemsProducts {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+}

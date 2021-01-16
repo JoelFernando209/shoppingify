@@ -6,7 +6,7 @@ import classes from './NotificationsButton.module.scss';
 
 const NotificationsButton = ({ numberNotifications }) => (
   <button className={classes.NotificationsButton}>
-    <img src={CartIcon} />
+    <img src={CartIcon} alt='Cart' />
     <div className={classes.Notifications}>{numberNotifications}</div>
   </button>
 );

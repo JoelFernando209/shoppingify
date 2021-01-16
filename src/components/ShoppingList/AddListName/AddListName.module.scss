@@ -1,0 +1,41 @@
+$heightInput: 4.5rem;
+
+.AddListName {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  
+  background-color: white;
+  padding: 2rem;
+  height: 8rem;
+}
+
+.InputName {
+  border: 2px solid #F9A109;
+  border-radius: 1.2rem;
+  width: 100%;
+  height: $heightInput;
+  padding: 0 2rem;
+  font-family: inherit;
+  transition: all .3s;
+  
+  &:focus {
+    outline: none;
+    border: 2px solid darken(#F9A109, 5%);
+  }
+}
+
+.InputButton {
+  width: 25%;
+  position: absolute;
+  right: 2rem;
+  height: $heightInput;
+  border-radius: 1.2rem;
+  border: 2px solid #F9A109;
+  background-color: #F9A109;
+  font-family: inherit;
+  font-weight: 700;
+  color: white;
+}

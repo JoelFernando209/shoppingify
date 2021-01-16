@@ -6,7 +6,7 @@ const SidebarNavItem = ({ image, hoverItem }) => {
   
   return (
     <div className={classes.SidebarNavItem}>
-      <img src={image} />
+      <img src={image} alt={hoverItem} />
       
       <div className={classes.hoverItem}>{hoverItem}</div>
     </div>

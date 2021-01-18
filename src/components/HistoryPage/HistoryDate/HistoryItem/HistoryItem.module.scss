@@ -1,0 +1,55 @@
+.HistoryItem {
+  background-color: white;
+  border-radius: 1.5rem;
+  
+  height: 7rem;
+  padding: 1.5rem;
+  
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all .3s;
+  
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+  
+  &:hover {
+    background-color: darken(white, 5%);
+  }
+}
+
+.Info {
+  margin-left: auto;
+  display: flex;
+}
+
+.InfoDate {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  opacity: .4;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.Calendar {
+  margin-right: .5rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.Status {
+  padding: .4rem 1rem;
+  border-radius: .5rem;
+  font-size: 1.1rem;
+  opacity: .8;
+}
+
+.ArrowRight {
+  margin-left: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}

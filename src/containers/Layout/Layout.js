@@ -6,8 +6,6 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import classes from './Layout.module.css';
 
 const layout = ({ children }) => {
-  
-  
   return (
     <>
       <Sidebar />

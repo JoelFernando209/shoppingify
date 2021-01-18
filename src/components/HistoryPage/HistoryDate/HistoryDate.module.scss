@@ -1,0 +1,11 @@
+.HistoryDate {
+  &:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+}
+
+.TitleCategory {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}

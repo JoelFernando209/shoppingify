@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddIcon from '../../../../../assets/images/add-icon.svg';
+import AddIcon from '../../../../../../../assets/images/add-icon.svg';
 
 import classes from './ItemsProduct.module.scss';
 

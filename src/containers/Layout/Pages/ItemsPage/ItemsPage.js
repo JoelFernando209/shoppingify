@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ItemsDashboard from './ItemsDashboard/ItemsDashboard';
-import Header from '../Header/Header';
+import Header from '../../../../components/UI/Header/Header';
 
 const ItemsPage = () => {
   

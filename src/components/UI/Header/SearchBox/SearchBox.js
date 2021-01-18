@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchIcon from '../../../assets/images/search-icon.svg';
+import SearchIcon from '../../../../assets/images/search-icon.svg';
 
 import classes from './SearchBox.module.scss';
 

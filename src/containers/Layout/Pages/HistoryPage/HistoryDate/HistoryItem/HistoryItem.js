@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CalendarIcon from '../../../../assets/images/calendar-icon.svg';
-import ArrowRight from '../../../../assets/images/right-arrow.svg';
+import CalendarIcon from '../../../../../../assets/images/calendar-icon.svg';
+import ArrowRight from '../../../../../../assets/images/right-arrow.svg';
 
 import classes from './HistoryItem.module.scss';
 
@@ -36,7 +36,7 @@ const HistoryItem = ({ nameEvent, date, status }) => {
         </div>
       </div>
       
-      <img src={ArrowRight} className={classes.ArrowRight}/>
+      <img src={ArrowRight} alt='' className={classes.ArrowRight}/>
     </div>
   )
 };

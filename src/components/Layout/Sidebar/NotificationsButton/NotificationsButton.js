@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CartIcon from '../../../assets/images/cart-icon.svg';
+import CartIcon from '../../../../assets/images/cart-icon.svg';
 
 import classes from './NotificationsButton.module.scss';
 

@@ -1,6 +1,9 @@
 .SearchBox {
   position: relative;
   width: 35%;
+  
+  display: flex;
+  align-items: center;
 }
 
 .Input {
@@ -19,9 +22,8 @@
 }
 
 .SearchIcon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-75%);
-  left: 1.5rem;
+  position: relative;
+  left: 4rem;
+  
   opacity: .8;
 }

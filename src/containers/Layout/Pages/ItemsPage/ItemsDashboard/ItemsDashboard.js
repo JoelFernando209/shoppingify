@@ -2,41 +2,14 @@ import React from 'react';
 
 import ItemsCategory from './ItemsCategory/ItemsCategory';
 
-const ItemsDashboard = () => {
-  const arrItems = [
-    {
-      title: 'Avocado'
-    },
-    {
-      title: 'chicken'
-    },
-    {
-      title: 'apple'
-    },
-    {
-      title: 'Avocado'
-    },
-    {
-      title: 'chicken'
-    },
-    {
-      title: 'apple'
-    },
-    {
-      title: 'Avocado'
-    },
-    {
-      title: 'chicken'
-    },
-    {
-      title: 'apple'
-    }
-  ];
+const ItemsDashboard = ({ itemsProduct }) => {
+  const itemsCategories = itemsProduct.map(product => {
+    return <ItemsCategory key={product.id} titleCategory={product.categoryTitle} arrItems={product.itemsProduct} />
+  })
   
   return (
     <>
-      <ItemsCategory titleCategory='Fruit and Vegetables' arrItems={arrItems} />
-      <ItemsCategory titleCategory='Fruit and Vegetables' arrItems={arrItems} />
+      {itemsCategories}
     </>
   );
 };

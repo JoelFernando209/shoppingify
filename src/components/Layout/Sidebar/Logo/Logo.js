@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LogoIcon from '../../../assets/images/logo.svg';
+import LogoIcon from '../../../../assets/images/logo.svg';
 
 import classes from './Logo.module.scss';
 

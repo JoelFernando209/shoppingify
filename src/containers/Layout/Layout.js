@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import ShoppingList from '../../components/ShoppingList/ShoppingList';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import ShoppingList from '../../components/Layout/ShoppingList/ShoppingList';
+import Sidebar from '../../components/Layout/Sidebar/Sidebar';
 
 import classes from './Layout.module.css';
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
+  const [ addItemStatus, setAddItemStatus ] = useState(false);
+  
+  const toggleItemStatusHandler = () => {
+    setAddItemStatus(!addItemStatus);
+  }
+  
   return (
     <>
       <Sidebar />
       <div className={classes.childrenParent}>
         {children}
       </div>
-      <ShoppingList />
+      <ShoppingList addItemState={addItemStatus} toggleItemStatus={toggleItemStatusHandler} />
     </>
   )
 };
 
-export default layout;
+export default Layout;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ListIcon from '../../../assets/images/list-icon.svg';
-import HistoryIcon from '../../../assets/images/history-icon.svg';
-import StatisticsIcon from '../../../assets/images/statistics-icon.svg';
+import ListIcon from '../../../../assets/images/list-icon.svg';
+import HistoryIcon from '../../../../assets/images/history-icon.svg';
+import StatisticsIcon from '../../../../assets/images/statistics-icon.svg';
 
 import classes from './SidebarNav.module.scss';
 

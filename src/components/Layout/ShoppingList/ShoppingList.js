@@ -6,8 +6,9 @@ import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
 import ShoppingCategory from './ShoppingCategory/ShoppingCategory';
 import AddListName from './AddListName/AddListName';
+import ShoppingAddItem from '../ShoppingAddItem/ShoppingAddItem';
 
-const shoppingList = () => {
+const shoppingList = ({ addItemState, toggleItemStatus }) => {
   const createId = () => {
     let currentId = 0;
     
@@ -67,16 +68,20 @@ const shoppingList = () => {
   );
   
   return (
-    <div className={classes.ShoppingList}>
-      <PopupAddItem />
+    <>
+      <div className={classes.ShoppingList}>
+        <PopupAddItem clicked={toggleItemStatus} />
+        
+        <ShoppingHeader />
+        
+        {shoppingCategories}
+        
+        <AddListName />
+      </div>
       
-      <ShoppingHeader />
-      
-      {shoppingCategories}
-      
-      <AddListName />
-    </div>
-  )
+      <ShoppingAddItem status={addItemState} />
+    </>
+  );
 };
 
 export default shoppingList;

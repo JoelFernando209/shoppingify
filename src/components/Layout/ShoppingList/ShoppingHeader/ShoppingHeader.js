@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CreateIcon from '../../../assets/images/create-icon.svg';
+import CreateIcon from '../../../../assets/images/create-icon.svg';
 
 import classes from './ShoppingHeader.module.scss';
 

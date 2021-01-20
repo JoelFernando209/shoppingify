@@ -24,4 +24,4 @@ yarn-error.log*
 
 .eslintcache
 
-# firebaseConfig.js
+firebaseConfig.js

@@ -1,3 +1,11 @@
+.FormInput {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5rem;
+}
+
 .LabelInput {
   position: relative;
 }
@@ -12,7 +20,7 @@
   transition: all .3s;
 }
 
-.Input {
+.InputAdd {
   width: 100%;
   height: 5rem;
   padding: 0 2rem;
@@ -21,6 +29,7 @@
   border-radius: 1.5rem;
   opacity: .7;
   transition: all .3s;
+  font-family: inherit;
 
   &:focus {
     outline: none;
@@ -30,4 +39,10 @@
   &:focus + .TitleLabel {
     color: #F9A109;
   }
+}
+
+.Textarea {
+  height: 10rem;
+  padding: 1rem;
+  font-family: inherit;
 }

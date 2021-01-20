@@ -79,7 +79,7 @@ const shoppingList = ({ addItemState, toggleItemStatus }) => {
         <AddListName />
       </div>
       
-      <ShoppingAddItem status={addItemState} />
+      <ShoppingAddItem status={addItemState} toggleItemStatus={toggleItemStatus} />
     </>
   );
 };

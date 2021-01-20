@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import Input from '../../UI/Input/Input';
+import ShoppingAddForm from './ShoppingAddForm/ShoppingAddForm';
+import ShoppingAddControls from './ShoppingAddControls/ShoppingAddControls';
 
 import classes from './ShoppingAddItem.module.scss';
 
-const ShoppingAddItem = ({ status }) => {
+const ShoppingAddItem = ({ status, toggleItemStatus }) => {
+  useEffect(() => {
+    console.log('[ShoppingAddItem.js] renderized')
+  })
+  
   let styleAdd = {
     width: '0',
-    visibility: 'hidden'
+    visibility: 'hidden',
+    opacity: '0'
   };
   
   if(status) {
     styleAdd = {
       width: '32rem',
-      visibility: 'visible'
+      visibility: 'visible',
+      opacity: '1'
     };
   }
   
@@ -21,19 +28,9 @@ const ShoppingAddItem = ({ status }) => {
     <div className={classes.ShoppingAddItem} style={styleAdd}>
       <h2 className={classes.TitleAdd}>Add a new item</h2>
       
-      <form className={classes.FormInput}>
-        <Input label='Name' placeholder='Enter a name...' type='text' />
-        
-        <label className={classes.LabelInput}>
-          <div className={classes.TitleLabel}>Note (optional)</div>
-          
-          <textarea placeholder='Enter a note...' className={classes.InputAdd} style={{ resize: 'none' }}></textarea>
-        </label>
-        
-        <Input label='Image (optional)' placeholder='Enter a url...' type='text' />
-        
-        <Input label='Category' placeholder='Enter a category...' type='text' />
-      </form>
+      <ShoppingAddForm />
+      
+      <ShoppingAddControls clickedCancel={toggleItemStatus} />
     </div>
   )
 };

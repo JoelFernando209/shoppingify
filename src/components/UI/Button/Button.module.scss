@@ -31,4 +31,34 @@
 .cyan {
   background-color: #56CCF2;
   color: white;
+  
+  &:hover {
+    background-color: darken(#56CCF2, 5%);
+  }
+  
+  &:active {
+    background-color: darken(#56CCF2, 15%);
+  }
+}
+
+.orange {
+  background-color: #F9A109;
+  color: white;
+  
+  &:hover {
+    background-color: darken(#F9A109, 5%);
+  }
+  
+  &:active {
+    background-color: darken(#F9A109, 15%);
+  }
+}
+
+.transparent {
+  background-color: #FAFAFE;
+  color: black;
+  
+  &:hover {
+    background-color: darken(#FAFAFE, 5%);
+  }
 }

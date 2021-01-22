@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
+import PopupContext from './context/PopupContext';
+
 import Layout from './containers/Layout/Layout';
 import ItemsPage from './containers/Layout/Pages/ItemsPage/ItemsPage';
 import HistoryPage from './containers/Layout/Pages/HistoryPage/HistoryPage';
@@ -94,14 +96,28 @@ const App = () => {
     }
   ]);
   
+  const [ ingresarPopupStatus, setIngresarPopupStatus ] = useState(true);
+  
+  const hidePopup = () => {
+    setIngresarPopupStatus(false);
+  };
+  
+  const showPopup = () => {
+    setIngresarPopupStatus(true);
+  };
+  
   return (
-    <div>
-      <Layout>
-        <Route exact path='/' render={() => <ItemsPage products={products} />} />
-        <Route path='/history' component={HistoryPage} />
-        <Route path='/statistics' component={StatisticsPage} />
+    <PopupContext.Provider value={{
+      popupStatus: ingresarPopupStatus,
+      hidePopup,
+      showPopup
+    }}>
+      <Layout popupStatus={ingresarPopupStatus} changePopupStatus={setIngresarPopupStatus}>
+          <Route exact path='/' render={() => <ItemsPage products={products} />} />
+          <Route path='/history' component={HistoryPage} />
+          <Route path='/statistics' component={StatisticsPage} />
       </Layout>
-    </div>
+    </PopupContext.Provider>
   );
 }
 

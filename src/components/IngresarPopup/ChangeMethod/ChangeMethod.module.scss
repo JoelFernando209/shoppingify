@@ -1,0 +1,30 @@
+.ChangeMethod {
+  display: flex;
+  width: 40%;
+  height: 4rem;
+  justify-content: space-between;
+  margin-bottom: .3rem;
+}
+
+.Method {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  font-weight: 600;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 1.8rem;
+    left: 0;
+    height: 1px;
+    background-color: black;
+    width: 0;
+    border-radius: 5px;
+    transition: all .3s;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+}

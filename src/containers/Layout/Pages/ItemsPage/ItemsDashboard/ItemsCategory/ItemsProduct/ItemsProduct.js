@@ -5,7 +5,6 @@ import AddIcon from '../../../../../../../assets/images/add-icon.svg';
 import classes from './ItemsProduct.module.scss';
 
 const ItemsProduct = ({ nameProduct }) => {
-  
   return (
     <div className={classes.ItemsProduct}>
       {nameProduct}

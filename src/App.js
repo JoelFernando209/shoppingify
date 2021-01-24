@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import PopupContext from './context/PopupContext';
@@ -7,6 +7,8 @@ import Layout from './containers/Layout/Layout';
 import ItemsPage from './containers/Layout/Pages/ItemsPage/ItemsPage';
 import HistoryPage from './containers/Layout/Pages/HistoryPage/HistoryPage';
 import StatisticsPage from './containers/Layout/Pages/StatisticsPage/StatisticsPage';
+
+import { openPopupBasedOnAuth } from './firebase/FirebaseUtils/firebase.auth.js';
 
 const App = () => {
   const [ products, setProducts ] = useState([
@@ -96,7 +98,11 @@ const App = () => {
     }
   ]);
   
-  const [ ingresarPopupStatus, setIngresarPopupStatus ] = useState(true);
+  const [ ingresarPopupStatus, setIngresarPopupStatus ] = useState(false);
+  
+  const checkIfUserAuth = () => {
+    openPopupBasedOnAuth(setIngresarPopupStatus)
+  }
   
   const hidePopup = () => {
     setIngresarPopupStatus(false);
@@ -106,11 +112,16 @@ const App = () => {
     setIngresarPopupStatus(true);
   };
   
+  useEffect(() => {
+    checkIfUserAuth();
+  }, [])
+  
   return (
     <PopupContext.Provider value={{
       popupStatus: ingresarPopupStatus,
       hidePopup,
-      showPopup
+      showPopup,
+      checkIfUserAuth
     }}>
       <Layout popupStatus={ingresarPopupStatus} changePopupStatus={setIngresarPopupStatus}>
           <Route exact path='/' render={() => <ItemsPage products={products} />} />

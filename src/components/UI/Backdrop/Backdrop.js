@@ -4,6 +4,7 @@ import classes from './Backdrop.module.scss';
 
 const Backdrop = ({ children, clicked, show }) => {
   let styleBackdrop = {
+    position: 'relative',
     opacity: '0',
     visibility: 'hidden'
   };
@@ -16,9 +17,10 @@ const Backdrop = ({ children, clicked, show }) => {
   }
   
   return (
-    <div className={classes.Backdrop} onClick={clicked} style={styleBackdrop}>
+    <div style={styleBackdrop} className={classes.BackdropParent}>
+      <div className={classes.Backdrop} onClick={clicked}></div>
       {children}
-    </div>
+    </div >
   );;
 };
 

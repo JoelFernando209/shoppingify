@@ -4,10 +4,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
-  height: 80%;
-  
+
   background-color: white;
   border-radius: 2rem;
-  z-index: 100;
+  z-index: 600;
   padding: 2rem;
+  transition: all .3s;
 }

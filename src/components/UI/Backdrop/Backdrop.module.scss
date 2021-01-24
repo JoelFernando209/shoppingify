@@ -1,5 +1,5 @@
 .Backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   
@@ -7,6 +7,12 @@
   height: 100vh;
   
   background-color: rgba(black, .4);
-  z-index: 1000;
+  z-index: 200;
   transition: all .3s;
+}
+
+.BackdropParent {
+  position: relative;
+  transition: all .3s;
+  z-index: 1000;
 }

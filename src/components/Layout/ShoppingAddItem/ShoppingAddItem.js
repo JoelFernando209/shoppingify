@@ -35,4 +35,4 @@ const ShoppingAddItem = ({ status, toggleItemStatus }) => {
   )
 };
 
-export default ShoppingAddItem;
+export default React.memo(ShoppingAddItem);

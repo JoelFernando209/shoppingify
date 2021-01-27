@@ -4,7 +4,7 @@ import ItemsCategory from './ItemsCategory/ItemsCategory';
 
 const ItemsDashboard = ({ itemsProduct }) => {
   const itemsCategories = itemsProduct.map(product => {
-    return <ItemsCategory key={product.id} titleCategory={product.categoryTitle} arrItems={product.itemsProduct} />
+    return <ItemsCategory key={product.id} titleCategory={product.categoryItem} arrItems={[{ id: product.id, title: product.nameItem }]} />
   })
   
   return (

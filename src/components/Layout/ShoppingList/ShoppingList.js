@@ -6,7 +6,7 @@ import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
 import ShoppingCategory from './ShoppingCategory/ShoppingCategory';
 import AddListName from './AddListName/AddListName';
-import ShoppingAddItem from '../ShoppingAddItem/ShoppingAddItem';
+import ShoppingAddItem from '../../../containers/ShoppingAddItem/ShoppingAddItem';
 
 const shoppingList = ({ addItemState, toggleItemStatus }) => {
   const createId = () => {

@@ -17,3 +17,16 @@
   font-weight: 550;
   font-size: 2.2rem;
 }
+
+.Error, .Success {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.Error {
+  color: red;
+}
+
+.Success {
+  color: green;
+}

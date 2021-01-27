@@ -6,24 +6,25 @@
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .loader {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
   color: #f9a109;
   text-indent: -9999em;
   margin: 88px auto;
-  position: relative;
+  // position: relative;
   font-size: 11px;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
+  z-index: 2000;
   
   &::before, &::after {
     position: absolute;

@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './RegisterForm.module.scss';
 
-import Button from '../../../UI/Button/Button';
-import Input from '../../../UI/Input/Input';
+import Button from '../../../../components/UI/Button/Button';
+import Input from '../../../../components/UI/Input/Input';
 
 const RegisterForm = ({ setEmailInput, setPwInput, setUsernameInput, submit }) => (
   <div className={classes.Form}>

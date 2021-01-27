@@ -3,14 +3,20 @@ import 'firebase/auth';
 
 const auth = firebase.auth();
 
-export const openPopupBasedOnAuth = (stateUpdate) => {
+export const getUidSync = () => {
+  const user = auth.currentUser;
+  
+  return user.uid;
+};
+
+export const openPopupBasedOnAuth = stateUpdate => {
   auth.onAuthStateChanged(user => {
     stateUpdate(!(user && user.emailVerified));
   })
 }
 
 export const openPopupBasedOnAuthSync = stateUpdate => {
-  const user = firebase.auth().currentUser;
+  const user = auth.currentUser;
   
   stateUpdate(!(user && user.emailVerified));
 }

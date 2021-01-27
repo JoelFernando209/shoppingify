@@ -27,9 +27,7 @@ const validateStr = (type, string, validateMethods) => {
   }
   
   if(validateMethods.required) {
-    if(string) {
-      isValid = string.trim().length > 0 && isValid;
-    }
+    isValid = string.trim().length > 0 && isValid;
     
     if(!isValid) {
       errMessage = `The ${type} is required`;
@@ -69,14 +67,29 @@ export const validatePw = (pw, setError) => {
   return isValid;
 }
 
-export const validateUsername = (username, setError) => {
+export const validateName = (username, setError) => {
   const validateOptions = {
     required: true,
     minLength: 5,
     maxLength: 25
   };
   
-  const [ isValid, errMessage ] = validateStr('username', username, validateOptions);
+  const [ isValid, errMessage ] = validateStr('name', username, validateOptions);
+  
+  if(errMessage) {
+    setError({ message: errMessage, type: 'error' });
+  }
+  
+  return isValid;
+}
+
+
+export const validateCategory = (category, setError) => {
+  const validateOptions = {
+    required: true
+  };
+  
+  const [ isValid, errMessage ] = validateStr('category', category, validateOptions);
   
   if(errMessage) {
     setError({ message: errMessage, type: 'error' });

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import GoogleIcon from '../../../../assets/images/google-icon.png';
+import GoogleIcon from '../../../assets/images/google-icon.png';
 
-import Button from '../../../UI/Button/Button';
+import Button from '../../../components/UI/Button/Button';
 
 import classes from './GoogleAuth.module.scss';
 

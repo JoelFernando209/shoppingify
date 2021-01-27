@@ -4,7 +4,6 @@ import classes from './Backdrop.module.scss';
 
 const Backdrop = ({ children, clicked, show }) => {
   let styleBackdrop = {
-    position: 'relative',
     opacity: '0',
     visibility: 'hidden'
   };

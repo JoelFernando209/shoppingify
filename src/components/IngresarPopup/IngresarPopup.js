@@ -7,7 +7,7 @@ import PopupForm from '../../containers/PopupForm/PopupForm';
 
 import classes from './IngresarPopup.module.scss';
 
-import * as actionTypes from '../../store/actions';
+import * as actions from '../../store/actions/index';
 
 const IngresarPopup = ({
   status,
@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onCloseHandler: () => dispatch({ type: actionTypes.HIDE_LOG_POPUP })
+  onCloseHandler: () => dispatch(actions.hideLogPopup())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IngresarPopup);

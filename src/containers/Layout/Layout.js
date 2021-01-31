@@ -1,6 +1,4 @@
-import React, { useState, useContext } from 'react';
-
-import PopupContext from '../../context/PopupContext';
+import React, { useState } from 'react';
 
 import classes from './Layout.module.css';
 
@@ -13,8 +11,7 @@ const Layout = ({
     popupStatus,
     changePopupStatus
   }) => {
-  const PopupObjContext = useContext(PopupContext);
-  
+
   const [ addItemStatus, setAddItemStatus ] = useState(false);
   const [ authErr, setAuthErr ] = useState(null);
   

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
 import ShoppingAddForm from './ShoppingAddForm/ShoppingAddForm';
 import ShoppingAddControls from './ShoppingAddControls/ShoppingAddControls';
@@ -6,9 +7,10 @@ import ShoppingAddControls from './ShoppingAddControls/ShoppingAddControls';
 import classes from './ShoppingAddItem.module.scss';
 
 import { validateName, validateCategory } from '../../utils/validation.utils';
-import { addItem } from '../../firebase/FirebaseUtils/firebase.firestore';
 
-const ShoppingAddItem = ({ status, toggleItemStatus }) => {
+import * as actions from '../../store/actions/index';
+
+const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
   const [ nameItem, setNameItem ] = useState('');
   const [ noteItem, setNoteItem ] = useState('');
   const [ imageURL, setImageURL ] = useState('');
@@ -30,7 +32,6 @@ const ShoppingAddItem = ({ status, toggleItemStatus }) => {
   
   const setCategory = event => {
     setCategoryItem(event.target.value);
-    console.log(categoryItem);
   }
   
   const submitAddItem = () => {
@@ -48,7 +49,7 @@ const ShoppingAddItem = ({ status, toggleItemStatus }) => {
         setError: setAddError
       };
       
-      addItem(itemInfo);
+      onSetProduct(itemInfo);
     }
   };
   
@@ -98,4 +99,8 @@ const ShoppingAddItem = ({ status, toggleItemStatus }) => {
   )
 };
 
-export default ShoppingAddItem;
+const mapDispatchToProps = dispatch => ({
+  onSetProduct: product => dispatch(actions.setProduct(product))
+});
+
+export default connect(null, mapDispatchToProps)(ShoppingAddItem);

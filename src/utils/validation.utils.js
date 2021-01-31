@@ -7,6 +7,8 @@ const validateStr = (type, string, validateMethods) => {
     
     if(!isValid) {
       errMessage = `The ${type} needs a minimum length of ${validateMethods.minLength} characters`;
+      
+      return [isValid, errMessage]
     }
   }
   
@@ -14,7 +16,9 @@ const validateStr = (type, string, validateMethods) => {
     isValid = string.length <= validateMethods.maxLength && isValid;
     
     if(!isValid) {
-      errMessage = `The ${type} needs a maximum length of ${validateMethods.maxLength} characters`;
+      errMessage = `The ${type} has a maximum length of ${validateMethods.maxLength} characters`;
+      
+      return [isValid, errMessage]
     }
   }
   
@@ -23,6 +27,8 @@ const validateStr = (type, string, validateMethods) => {
     
     if(!isValid) {
       errMessage = `The ${type} doesn't have a @`;
+      
+      return [isValid, errMessage]
     }
   }
   
@@ -31,6 +37,8 @@ const validateStr = (type, string, validateMethods) => {
     
     if(!isValid) {
       errMessage = `The ${type} is required`;
+      
+      return [isValid, errMessage]
     }
   }
   

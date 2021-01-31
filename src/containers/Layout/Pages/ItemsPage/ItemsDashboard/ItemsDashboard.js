@@ -1,10 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ItemsCategory from './ItemsCategory/ItemsCategory';
 
-const ItemsDashboard = ({ itemsProduct }) => {
-  const itemsCategories = itemsProduct.map(product => {
-    return <ItemsCategory key={product.id} titleCategory={product.categoryItem} arrItems={[{ id: product.id, title: product.nameItem }]} />
+const ItemsDashboard = ({ categories }) => {
+  const categoryNames = Object.keys(categories);
+  
+  const itemsCategories = categoryNames.map(categoryName => {
+    return (
+      <ItemsCategory
+        key={categories[categoryName].id}
+        titleCategory={categories[categoryName].categoryName}
+        arrItems={categories[categoryName].items}
+      />
+    )
   })
   
   return (
@@ -14,4 +23,8 @@ const ItemsDashboard = ({ itemsProduct }) => {
   );
 };
 
-export default ItemsDashboard;
+const mapStateToProps = state => ({
+  categories: state.products.products
+});
+
+export default connect(mapStateToProps)(ItemsDashboard);

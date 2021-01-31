@@ -5,57 +5,40 @@ import { getUidSync } from './firebase.auth';
 
 const db = firebase.firestore();
 
-export const addItem = objInfo => {
+export const addItemDB = (objInfo, endFunc) => {
   const { dataDoc, setError } = objInfo;
-  const { categoryItem } = dataDoc;
+
+  const infoItem = {
+    ...dataDoc,
+    timestamp: new Date(),
+    uid: getUidSync()
+  }
   
-  db.collection('categories')
-    .doc(categoryItem)
-    .collection('items')
-    .add({
-      ...dataDoc,
-      timestamp: new Date(),
-      uid: getUidSync()
-    })
-    .then(() => {
+  db.collection('items')
+    .add(infoItem)
+    .then(doc => {
+      const productInfo = {
+        ...infoItem,
+        id: doc.id
+      }
+      
       setError({ message: 'Item has been set correctly!', type: 'success' })
+      
+      endFunc(productInfo)
     })
     .catch(err => {
       setError({ message: err.message, type: 'error' })
     })
 };
 
-export const snapshotItems = setState => {
+export const snapshotProducts = funcSnapshot => {
   db
     .collection('items')
-    .onSnapshot(snapshot => {
-      const arrDataDocs = [];
-      
-      /*
-        {
-          categoryItem: 'category',
-          uid: '',
-          items: [
-            {
-              nameItem: 'name',
-              timestamp: new Date(),
-              imageURL: '',
-              noteItem: ''
-            }
-          ]
-        }
-      */
-      
-      snapshot.forEach(doc => {
-        
-      })
-      
-      console.log(arrDataDocs);
-      
-      setState(arrDataDocs);
-    },
-      err => {
-        console.log(err.message)
-      }
-    )
+    .get()
+    .then(snapshot => {
+      funcSnapshot(snapshot)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
 };

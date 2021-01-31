@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import compose from 'compose-function';
 
 import RegisterForm from './RegisterForm/RegisterForm';
@@ -8,8 +7,6 @@ import { validateEmail, validatePw, validateName } from '../../../utils/validati
 import { registerWithEmailAndPassword, sendEmailVerification } from '../../../firebase/FirebaseUtils/firebase.auth';
 
 import classes from './RegisterDashboard.module.scss';
-
-import * as actionTypes from '../../../store/actions';
 
 const RegisterDashboard = (props) => {
   const submitRegisterHandler = () => {

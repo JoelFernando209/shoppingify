@@ -5,6 +5,7 @@ import classes from './Layout.module.css';
 import ShoppingList from '../../components/Layout/ShoppingList/ShoppingList';
 import Sidebar from '../../components/Layout/Sidebar/Sidebar';
 import IngresarPopup from '../../components/IngresarPopup/IngresarPopup';
+import NotEmailAuthPopup from '../../components/NotEmailAuthPopup/NotEmailAuthPopup';
 
 const Layout = ({
     children,
@@ -21,6 +22,8 @@ const Layout = ({
   
   return (
     <>
+      <NotEmailAuthPopup />
+      
       <IngresarPopup
         error={authErr}
         setError={setAuthErr}

@@ -11,7 +11,15 @@ export const getUidSync = () => {
 
 export const openPopupBasedOnAuth = stateUpdate => {
   auth.onAuthStateChanged(user => {
-    stateUpdate(!(user && user.emailVerified));
+    stateUpdate(!user);
+  })
+}
+
+export const openPopupBasedOnEmail = stateUpdate => {
+  auth.onAuthStateChanged(user => {
+    if(user) {
+      stateUpdate(!user.emailVerified);
+    }
   })
 }
 
@@ -27,6 +35,14 @@ export const registerWithEmailAndPassword = objInfo => {
   const authPromise = auth.createUserWithEmailAndPassword(inputEmail, inputPw)
                       
   return Object.assign({}, objInfo, { authPromise });
+};
+ 
+export const resendEmailVerification = () => {
+  const user = auth.currentUser;
+  
+  user.sendEmailVerification({
+     url: 'http://localhost:3000/'
+  })
 };
  
 export const sendEmailVerification = objInfo => {

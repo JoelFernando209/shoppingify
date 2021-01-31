@@ -1,0 +1,33 @@
+/*
+  RESPONSIVE BREAKPOINTS:
+  
+  sm-phone: 32.5em             // 520px
+  phone: 46.875em              // 750px
+  tablet: 58.75em              // 940px
+  desktop: 75.9375em           // 1215px
+  big-desktop: 105em           // 1680px
+  
+  1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm-phone {
+    @media only screen and (max-width: 32.5em) { @content };
+  }
+  
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 46.875em) { @content };
+  }
+  
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 58.75em) { @content };
+  }
+  
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 75.9375em) { @content };
+  }
+  
+  @if $breakpoint == big-desktop {
+    @media only screen and (max-width: 105em) { @content };
+  }
+}

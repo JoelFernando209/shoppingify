@@ -1,7 +1,7 @@
 import firebase from '../firebaseConfig.js';
 import 'firebase/firestore';
 
-import { getUidSync } from './firebase.auth';
+import { getUidSync, setFuncWhenUserLoaded } from './firebase.auth';
 
 const db = firebase.firestore();
 
@@ -27,18 +27,24 @@ export const addItemDB = (objInfo, endFunc) => {
       endFunc(productInfo)
     })
     .catch(err => {
+      console.log(err);
       setError({ message: err.message, type: 'error' })
     })
 };
 
 export const snapshotProducts = funcSnapshot => {
-  db
-    .collection('items')
-    .get()
-    .then(snapshot => {
-      funcSnapshot(snapshot)
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
+  setFuncWhenUserLoaded((user, unsubscribe) => {
+    db
+      .collection('items')
+      .where('uid', '==', user.uid)
+      .get()
+      .then(snapshot => {
+        funcSnapshot(snapshot)
+        
+        unsubscribe();
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  });
 };

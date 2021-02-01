@@ -38,12 +38,25 @@ const addProduct = (state, action) => {
   const { products } = state;
   const { categoryItem } = action.product;
   
-  const productUpdate = {
-    ...products,
-    [categoryItem]: {
+  let categoryItemVal;
+  
+  if(categoryItem in products) {
+    categoryItemVal = {
       ...products[categoryItem],
       items: products[categoryItem].items.concat(action.product)
-    }
+    };
+    
+  } else {
+    categoryItemVal = {
+      categoryName: categoryItem,
+      id: categoryItem,
+      items: [action.product]
+    };
+  }
+  
+  const productUpdate = {
+    ...products,
+    [categoryItem]: categoryItemVal
   }
   
   return {

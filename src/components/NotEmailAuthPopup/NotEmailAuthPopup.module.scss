@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.Shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
 .EmailIcon {
   width: 25rem;
   height: 25rem;
@@ -27,4 +31,23 @@
   margin: 2rem 0;
   margin-bottom: 3rem;
   font-weight: 700;
+  text-align: center;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate(-50%, -50%) translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate(-50%, -50%) translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate(-50%, -50%) translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate(-50%, -50%) translate3d(4px, 0, 0);
+  }
 }

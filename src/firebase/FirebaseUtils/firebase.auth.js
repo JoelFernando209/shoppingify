@@ -15,6 +15,14 @@ export const openPopupBasedOnAuth = stateUpdate => {
   })
 }
 
+export const setFuncWhenUserLoaded = func => {
+  const unsubscribe = auth.onAuthStateChanged(user => {
+    if(user) {
+      func(user, unsubscribe);
+    }
+  })
+};
+
 export const openPopupBasedOnEmail = stateUpdate => {
   auth.onAuthStateChanged(user => {
     if(user) {

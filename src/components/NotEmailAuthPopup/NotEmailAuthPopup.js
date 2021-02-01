@@ -8,21 +8,21 @@ import Button from '../UI/Button/Button';
 import classes from './NotEmailAuthPopup.module.scss';
 
 import { openPopupBasedOnEmail, resendEmailVerification } from '../../firebase/FirebaseUtils/firebase.auth';
+import { toggleShakeClass } from '../../utils/style.utils';
 
 const NotEmailAuthPopup = () => {
   const [ statusPopup, setStatusPopup ] = useState(false);
+  const [ notEmailClasses, setNotEmailClasses ] = useState([classes.NotEmailPopup]);
   
   useEffect(() => {
     openPopupBasedOnEmail(setStatusPopup);
   }, [])
   
-  useEffect(() => {
-    console.log('NotEmailAuthPopup render');
-  })
+  const toggleShakeClassHandler = toggleShakeClass.bind(null, notEmailClasses, setNotEmailClasses, classes.Shake);
   
   return (
-    <Backdrop show={statusPopup}>
-      <div className={classes.NotEmailPopup}>
+    <Backdrop show={statusPopup} clicked={toggleShakeClassHandler}>
+      <div className={notEmailClasses.join(' ')}>
         <img src={OpenedEmailIcon} alt='Email has been sended' className={classes.EmailIcon} />
         
         <div className={classes.Title}>

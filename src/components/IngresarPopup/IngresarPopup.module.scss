@@ -1,3 +1,5 @@
+@import '../../scss/mixins.scss';
+
 .IngresarPopup {
   position: fixed;
   top: 50%;
@@ -10,6 +12,22 @@
   z-index: 600;
   padding: 2rem;
   transition: all .3s;
+  
+  @include respond(tablet) {
+    width: 40%;
+  }
+  
+  @include respond(phone) {
+    width: 55%;
+  }
+  
+  @include respond(sm-phone) {
+    width: 75%;
+  }
+  
+  @include respond(mini-phone) {
+    width: 90%;
+  }
 }
 
 .Shake {

@@ -10,12 +10,12 @@ const HistoryItem = ({ nameEvent, date, status }) => {
   
   if(status === 'completed') {
     statusStyle = {
-      border: '1px solid #56CCF2',
+      border: '1px solid currentColor',
       color: '#56CCF2'
     }
   } else if(status === 'cancelled') {
     statusStyle = {
-      border: '1px solid #EB5757',
+      border: '1px solid currentColor',
       color: '#EB5757'
     }
   }

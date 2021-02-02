@@ -1,3 +1,5 @@
+@import '../../../../scss/mixins.scss';
+
 .NotificationsButton {
   position: relative;
   width: 3rem;
@@ -8,6 +10,9 @@
   border: none;
   
   display: flex;
+  opacity: 0;
+  visibility: hidden;
+  
   align-items: center;
   justify-content: center;
   font-family: inherit;
@@ -28,6 +33,11 @@
   img {
     width: 1.5rem;
     height: 1.5rem;
+  }
+  
+  @include respond(sm-phone) {
+    opacity: 1;
+    visibility: visible;
   }
 }
 

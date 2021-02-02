@@ -8,7 +8,7 @@ import ShoppingCategory from './ShoppingCategory/ShoppingCategory';
 import AddListName from './AddListName/AddListName';
 import ShoppingAddItem from '../../../containers/ShoppingAddItem/ShoppingAddItem';
 
-const shoppingList = ({ addItemState, toggleItemStatus }) => {
+const shoppingList = ({ addItemState, toggleItemStatus, statusShopping }) => {
   const createId = () => {
     let currentId = 0;
     
@@ -67,9 +67,17 @@ const shoppingList = ({ addItemState, toggleItemStatus }) => {
       </div>
   );
   
+  const classesShopping = [classes.ShoppingList]
+  
+  if(statusShopping) {
+    classesShopping.push(classes.PhoneActive);
+  } else {
+    classesShopping.push(classes.PhoneInactive);
+  }
+  
   return (
     <>
-      <div className={classes.ShoppingList}>
+      <div className={classesShopping.join(' ')}>
         <PopupAddItem clicked={toggleItemStatus} />
         
         <ShoppingHeader />

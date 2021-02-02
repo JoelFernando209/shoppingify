@@ -1,9 +1,16 @@
+@import '../../../../scss/mixins.scss';
+
 .SearchBox {
   position: relative;
-  width: 35%;
-  
+
   display: flex;
   align-items: center;
+  width: 50%;
+  
+  @include respond(tablet) {
+    width: 100%;
+    margin-top: 1.5rem;
+  }
 }
 
 .Input {
@@ -22,8 +29,10 @@
 }
 
 .SearchIcon {
-  position: relative;
-  left: 4rem;
+  position: absolute;
+  left: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
   
   opacity: .8;
 }

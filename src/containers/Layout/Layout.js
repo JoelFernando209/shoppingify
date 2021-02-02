@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import classes from './Layout.module.css';
+import classes from './Layout.module.scss';
 
 import ShoppingList from '../../components/Layout/ShoppingList/ShoppingList';
 import Sidebar from '../../components/Layout/Sidebar/Sidebar';
@@ -15,10 +15,15 @@ const Layout = ({
 
   const [ addItemStatus, setAddItemStatus ] = useState(false);
   const [ authErr, setAuthErr ] = useState(null);
+  const [ shoppingListPhone, setShoppingListPhone ] = useState(false);
   
   const toggleItemStatusHandler = () => {
     setAddItemStatus(!addItemStatus);
   }
+  
+  const toggleShoppingListPhone = () => {
+    setShoppingListPhone(!shoppingListPhone);
+  };
   
   return (
     <>
@@ -29,12 +34,17 @@ const Layout = ({
         setError={setAuthErr}
       />
         
-      <Sidebar />
+      <Sidebar toggleShopping={toggleShoppingListPhone} />
       
       <div className={classes.childrenParent}>
         {children}
       </div>
-      <ShoppingList addItemState={addItemStatus} toggleItemStatus={toggleItemStatusHandler} />
+      
+      <ShoppingList
+        addItemState={addItemStatus}
+        statusShopping={shoppingListPhone}
+        toggleItemStatus={toggleItemStatusHandler}
+      />
     </>
   )
 };

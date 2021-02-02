@@ -57,19 +57,14 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
     console.log('[ShoppingAddItem.js] renderized')
   })
   
-  let styleAdd = {
-    width: '0',
-    visibility: 'hidden',
-    opacity: '0'
-  };
+  
+  const classesAdd = [classes.ShoppingAddItem];
   
   if(status) {
-    styleAdd = {
-      width: '32rem',
-      visibility: 'visible',
-      opacity: '1'
-    };
-  }
+    classesAdd.push(classes.StyleActive);
+  } else {
+    classesAdd.push(classes.StyleInactive);
+  };
   
   let styleError = classes.Error;
   
@@ -78,7 +73,7 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
   }
   
   return (
-    <div className={classes.ShoppingAddItem} style={styleAdd}>
+    <div className={classesAdd.join(' ')}>
       <h2 className={classes.TitleAdd}>Add a new item</h2>
       
       <ShoppingAddForm

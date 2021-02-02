@@ -1,3 +1,5 @@
+@import '../../scss/mixins.scss';
+
 .NotEmailPopup {
   position: fixed;
   top: 50%;
@@ -15,6 +17,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  @include respond(phone) {
+    width: 80%;
+  }
+  
+  @include respond(sm-phone) {
+    width: 90%;
+  }
 }
 
 .Shake {
@@ -22,14 +32,16 @@
 }
 
 .EmailIcon {
-  width: 25rem;
-  height: 25rem;
-  margin: 4rem 0;
+  height: 70%;
+  padding: 5rem;
+  
+  @include respond(sm-phone) {
+    padding: 10rem;
+  }
 }
 
 .Title {
-  margin: 2rem 0;
-  margin-bottom: 3rem;
+  margin: 10% 0;
   font-weight: 700;
   text-align: center;
 }

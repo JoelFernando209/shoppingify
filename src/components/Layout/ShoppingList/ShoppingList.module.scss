@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ShoppingList {
   display: flex;
   flex-direction: column;
@@ -10,6 +12,28 @@
   width: 32rem;
   height: 100vh;
   padding: 2.5rem 3rem;
+  transition: all .3s;
+  
+  @include respond(phone) {
+    width: 25rem;
+    padding: 2.5rem 2rem;
+  }
+}
+
+.PhoneInactive {
+  @include respond(sm-phone) {
+    width: 0; /* CHANGE TO calc(100% - 6rem)*/
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.PhoneActive {
+  @include respond(sm-phone) {
+    width: calc(100% - 6rem);
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .Categories {

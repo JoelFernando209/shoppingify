@@ -6,13 +6,13 @@ import NotificationsButton from './NotificationsButton/NotificationsButton';
 
 import classes from './Sidebar.module.scss';
 
-const Sidebar = () => {
+const Sidebar = ({ toggleShopping }) => {
   
   return (
     <div className={classes.Sidebar}>
       <Logo />
       <SidebarNav />
-      <NotificationsButton numberNotifications='3'/>
+      <NotificationsButton numberNotifications='3' clicked={toggleShopping} />
     </div>
   )
 };

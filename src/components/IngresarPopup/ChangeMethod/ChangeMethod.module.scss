@@ -1,8 +1,18 @@
+@import '../../../scss/mixins.scss';
+
 .ChangeMethod {
   display: flex;
   width: 40%;
   height: 4rem;
   justify-content: space-between;
+  
+  @include respond(desktop) {
+    width: 45%;
+  }
+  
+  @include respond(mini-phone) {
+    width: 60%;
+  }
 }
 
 .Method {

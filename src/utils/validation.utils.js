@@ -105,3 +105,5 @@ export const validateCategory = (category, setError) => {
   
   return isValid;
 }
+
+export const isObjEmpty = obj => Object.keys(obj).length > 0;

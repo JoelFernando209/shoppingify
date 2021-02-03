@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import { snapshotProducts, addItemDB } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { snapshotProducts, addItemDB, removeItemDB } from '../../../firebase/FirebaseUtils/firebase.firestore';
 
 export const setProducts = snapshotProducts => {
   return {
@@ -30,3 +30,18 @@ export const setProduct = product => {
     })
   };
 }
+
+export const removeProduct = product => {
+  return {
+    type: actionTypes.REMOVE_PRODUCT,
+    product
+  }
+};
+
+export const deleteProduct = product => {
+  return dispatch => {
+    removeItemDB(product.id, () => {
+      dispatch(removeProduct(product))
+    })
+  }
+};

@@ -4,7 +4,7 @@ import ShoppingItemCount from './ShoppingItemCount/ShoppingItemCount';
 
 import classes from './ShoppingItem.module.scss';
 
-const ShoppingItem = ({ id, value }) => {
+const ShoppingItem = ({ id, value, pieces }) => {
   
   const idInput = `sh-item-${id}`;
   
@@ -17,7 +17,7 @@ const ShoppingItem = ({ id, value }) => {
       </label>
       
       <div className={classes.ShoppingItemCount}>
-        <ShoppingItemCount pieces='3' />
+        <ShoppingItemCount pieces={pieces} />
       </div>
     </div>
   )

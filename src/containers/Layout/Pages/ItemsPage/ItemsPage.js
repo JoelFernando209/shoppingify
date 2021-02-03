@@ -6,7 +6,7 @@ import Header from '../../../../components/UI/Header/Header';
 
 import * as actions from '../../../../store/actions/index';
 
-const ItemsPage = ({ onSetProducts }) => {
+const ItemsPage = ({ onSetProducts, showInfoItem }) => {
 
   useEffect(() => {
     onSetProducts();
@@ -15,7 +15,9 @@ const ItemsPage = ({ onSetProducts }) => {
   return (
     <>
       <Header />
-      <ItemsDashboard />
+      <div style={{ position: 'relative' }}>
+        <ItemsDashboard showInfoItem={showInfoItem} />
+      </div>
     </>
   )
 };

@@ -6,5 +6,12 @@ export {
 
 export {
   getProducts,
-  setProduct
+  setProduct,
+  deleteProduct
 } from './creators/product';
+
+export {
+  saveItemList,
+  deleteItemList,
+  getItemList
+} from './creators/shoppingList';

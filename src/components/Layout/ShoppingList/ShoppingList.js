@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import classes from './ShoppingList.module.scss';
 
@@ -6,66 +7,38 @@ import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
 import ShoppingCategory from './ShoppingCategory/ShoppingCategory';
 import AddListName from './AddListName/AddListName';
-import ShoppingAddItem from '../../../containers/ShoppingAddItem/ShoppingAddItem';
+import Spinner from '../../UI/Spinner/Spinner';
 
-const shoppingList = ({ addItemState, toggleItemStatus, statusShopping }) => {
-  const createId = () => {
-    let currentId = 0;
+import { isObjEmpty } from '../../../utils/validation.utils';
+
+import * as actions from '../../../store/actions/index';
+
+const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems }) => {
+  useEffect(() => {
+    onSetItems();
+  }, [onSetItems]);
+  
+  let shoppingCategories = <Spinner />;
+  
+  if(isObjEmpty(items)) {
+    const itemNames = Object.keys(items);
     
-    return () => {
-      currentId++;
-      return currentId;
-    }
-  };
-  
-  const generateNewId = createId();
-  
-  const shoppingCategories = (
-    <div className={classes.Categories}>
-        <ShoppingCategory
-          title='Fruit and Vegetables'
-          generateNewId={generateNewId}
-          arrItem={[
-            {
-              name: 'Avocato'
-            },
-            {
-              name: 'Orange'
-            },
-            {
-              name: 'Apples'
-            }
-          ]} />
-        <ShoppingCategory
-          title='Fruit and Vegetables'
-          generateNewId={generateNewId}
-          arrItem={[
-            {
-              name: 'Avocato'
-            },
-            {
-              name: 'Orange'
-            },
-            {
-              name: 'Apples'
-            }
-          ]} />
-        <ShoppingCategory
-          title='Fruit and Vegetables'
-          generateNewId={generateNewId}
-          arrItem={[
-            {
-              name: 'Avocato'
-            },
-            {
-              name: 'Orange'
-            },
-            {
-              name: 'Apples'
-            }
-          ]} />
+    shoppingCategories = (
+      <div className={classes.Categories}>
+        {
+          itemNames.map(itemName => {
+            return (
+              <ShoppingCategory
+                key={items[itemName].id}
+                title={items[itemName].categoryItem}
+                arrItem={items[itemName].items}
+              />
+            )
+          })
+        }
       </div>
-  );
+    );
+  }
   
   const classesShopping = [classes.ShoppingList]
   
@@ -76,20 +49,24 @@ const shoppingList = ({ addItemState, toggleItemStatus, statusShopping }) => {
   }
   
   return (
-    <>
-      <div className={classesShopping.join(' ')}>
-        <PopupAddItem clicked={toggleItemStatus} />
-        
-        <ShoppingHeader />
-        
-        {shoppingCategories}
-        
-        <AddListName />
-      </div>
+    <div className={classesShopping.join(' ')}>
+      <PopupAddItem clicked={toggleItemStatus} />
       
-      <ShoppingAddItem status={addItemState} toggleItemStatus={toggleItemStatus} />
-    </>
+      <ShoppingHeader />
+      
+      {shoppingCategories}
+      
+      <AddListName />
+    </div>
   );
 };
 
-export default shoppingList;
+const mapStateToProps = state => ({
+  items: state.shopping.itemsList
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSetItems: () => dispatch(actions.getItemList())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);

@@ -64,8 +64,37 @@ const addProduct = (state, action) => {
   }
 }
 
+const removeProduct = (state, action) => {
+  let productUpdate = { ...state.products };
+  const { categoryItem } = action.product;
+  
+  const category = { ...productUpdate[categoryItem] };
+  const categoryItems = [ ...category.items ];
+  
+  const deleteIndex = categoryItems.findIndex(element => element.id === action.product.id);
+  
+  if(deleteIndex !== -1) {
+    categoryItems.splice(deleteIndex, 1)
+  }
+  
+  const updatedProductList = {
+    ...productUpdate,
+    [categoryItem]: {
+      ...category,
+      items: categoryItems
+    }
+  }
+  
+  return {
+    ...state,
+    products: updatedProductList
+  }
+};
+
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.REMOVE_PRODUCT: return removeProduct(state, action)
+    
     case actionTypes.SET_PRODUCTS: return setProducts(action)
     
     case actionTypes.ADD_PRODUCT: return addProduct(state, action)

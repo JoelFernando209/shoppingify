@@ -32,6 +32,15 @@ export const addItemDB = (objInfo, endFunc) => {
     })
 };
 
+export const removeItemDB = (idItem, endFunc) => {
+  db.collection('items')
+    .doc(idItem)
+    .delete()
+    .then(() => {
+      endFunc();
+    })
+};
+
 export const snapshotProducts = funcSnapshot => {
   setFuncWhenUserLoaded((user, unsubscribe) => {
     db
@@ -47,4 +56,27 @@ export const snapshotProducts = funcSnapshot => {
         console.log(err.message)
       })
   });
+};
+
+export const addShoppingItemDB = (item, endFunc) => {
+  db.collection('shoppingListItems')
+    .add({
+      categoryItem: item.categoryItem,
+      nameItem: item.nameItem,
+      uid: item.uid
+    })
+    .then(() => {
+      endFunc()
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
+}
+
+export const getShoppingItemDB = endFunc => {
+  db.collection('shoppingListItems')
+    .get()
+    .then(snapshot => {
+      endFunc(snapshot)
+    })
 };

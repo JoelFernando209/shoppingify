@@ -6,13 +6,10 @@ import ShoppingList from '../../components/Layout/ShoppingList/ShoppingList';
 import Sidebar from '../../components/Layout/Sidebar/Sidebar';
 import IngresarPopup from '../../components/IngresarPopup/IngresarPopup';
 import NotEmailAuthPopup from '../../components/NotEmailAuthPopup/NotEmailAuthPopup';
+import ShoppingAddItem from '../../containers/ShoppingAddItem/ShoppingAddItem';
+import InfoItem from '../../components/Layout/InfoItem/InfoItem';
 
-const Layout = ({
-    children,
-    popupStatus,
-    changePopupStatus
-  }) => {
-
+const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => {
   const [ addItemStatus, setAddItemStatus ] = useState(false);
   const [ authErr, setAuthErr ] = useState(null);
   const [ shoppingListPhone, setShoppingListPhone ] = useState(false);
@@ -40,11 +37,11 @@ const Layout = ({
         {children}
       </div>
       
-      <ShoppingList
-        addItemState={addItemStatus}
-        statusShopping={shoppingListPhone}
-        toggleItemStatus={toggleItemStatusHandler}
-      />
+      <ShoppingList statusShopping={shoppingListPhone} toggleItemStatus={toggleItemStatusHandler} />
+      
+      <ShoppingAddItem status={addItemStatus} toggleItemStatus={toggleItemStatusHandler} />
+      
+      <InfoItem status={infoItemStatus} hideInfoItemHandler={hideInfoItem} currentInfoItem={currentInfoItem} />
     </>
   )
 };

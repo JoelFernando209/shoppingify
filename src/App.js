@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -12,17 +12,34 @@ import { openPopupBasedOnAuth } from './firebase/FirebaseUtils/firebase.auth';
 import * as actions from './store/actions/index';
 
 const App = ({ onSetPopupStatus }) => {
+  const [ infoItemStatus, setInfoItemStatus ] = useState(false);
+  const [ currentInfoItem, setCurrentInfoItem ] = useState({});
+  
   const checkIfUserAuth = () => {
     openPopupBasedOnAuth(onSetPopupStatus)
   }
+  
+  const showInfoItem = item => {
+    setInfoItemStatus(true);
+    
+    setCurrentInfoItem(item);
+  };
+  
+  const hideInfoItem = () => {
+    setInfoItemStatus(false);
+  };
   
   useEffect(() => {
     checkIfUserAuth();
   }, []);
   
   return (
-    <Layout>
-      <Route exact path='/' component={ItemsPage} />
+    <Layout
+      infoItemStatus={infoItemStatus}
+      hideInfoItem={hideInfoItem}
+      currentInfoItem={currentInfoItem}
+    >
+      <Route exact path='/' render={() => <ItemsPage showInfoItem={showInfoItem} />} />
       <Route path='/history' component={HistoryPage} />
       <Route path='/statistics' component={StatisticsPage} />
     </Layout>

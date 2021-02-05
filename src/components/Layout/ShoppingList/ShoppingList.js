@@ -10,17 +10,18 @@ import AddListName from './AddListName/AddListName';
 import Spinner from '../../UI/Spinner/Spinner';
 
 import { isObjEmpty } from '../../../utils/validation.utils';
+import { isUserAuth } from '../../../firebase/FirebaseUtils/firebase.auth';
 
 import * as actions from '../../../store/actions/index';
 
-const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems }) => {
+const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems, auth }) => {
   useEffect(() => {
     onSetItems();
   }, [onSetItems]);
   
-  let shoppingCategories = <Spinner />;
+  let shoppingCategories = auth && <Spinner />;
   
-  if(isObjEmpty(items)) {
+  if(isObjEmpty(items) && auth) {
     const itemNames = Object.keys(items);
     
     shoppingCategories = (
@@ -62,7 +63,8 @@ const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, o
 };
 
 const mapStateToProps = state => ({
-  items: state.shopping.itemsList
+  items: state.shopping.itemsList,
+  auth: state.user.isAuth
 });
 
 const mapDispatchToProps = dispatch => ({

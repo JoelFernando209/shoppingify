@@ -15,3 +15,7 @@ export {
   deleteItemList,
   getItemList
 } from './creators/shoppingList';
+
+export {
+  checkAuth
+} from './creators/user';

@@ -15,3 +15,7 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const ADD_ITEM_LIST = 'ADD_ITEM_LIST';
 export const DELETE_ITEM_LIST = 'DELETE_ITEM_LIST';
 export const SET_ITEM_LIST = 'SET_ITEM_LIST';
+
+// user
+
+export const SET_AUTH = 'SET_AUTH';

@@ -9,6 +9,12 @@ export const getUidSync = () => {
   return user.uid;
 };
 
+export const isUserAuth = (endFunc) => {
+  auth.onAuthStateChanged(user => {
+    endFunc(!!user);
+  });
+};
+
 export const openPopupBasedOnAuth = stateUpdate => {
   auth.onAuthStateChanged(user => {
     stateUpdate(!user);

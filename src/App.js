@@ -11,7 +11,7 @@ import { openPopupBasedOnAuth } from './firebase/FirebaseUtils/firebase.auth';
 
 import * as actions from './store/actions/index';
 
-const App = ({ onSetPopupStatus }) => {
+const App = ({ onSetPopupStatus, onCheckAuth }) => {
   const [ infoItemStatus, setInfoItemStatus ] = useState(false);
   const [ currentInfoItem, setCurrentInfoItem ] = useState({});
   
@@ -31,6 +31,7 @@ const App = ({ onSetPopupStatus }) => {
   
   useEffect(() => {
     checkIfUserAuth();
+    onCheckAuth();
   }, []);
   
   return (
@@ -47,7 +48,8 @@ const App = ({ onSetPopupStatus }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onSetPopupStatus: result => dispatch(actions.setLogPopup(result))
+  onSetPopupStatus: result => dispatch(actions.setLogPopup(result)),
+  onCheckAuth: () => dispatch(actions.checkAuth())
 });
 
 export default connect(null, mapDispatchToProps)(App);

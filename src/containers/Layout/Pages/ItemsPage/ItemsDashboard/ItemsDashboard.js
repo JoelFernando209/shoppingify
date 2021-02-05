@@ -6,10 +6,10 @@ import Spinner from '../../../../../components/UI/Spinner/Spinner';
 
 import { isObjEmpty } from '../../../../../utils/validation.utils';
 
-const ItemsDashboard = ({ categories, showInfoItem }) => {
-  let itemsCategories = <Spinner />;
+const ItemsDashboard = ({ categories, showInfoItem, auth }) => {
+  let itemsCategories = auth && <Spinner />;
 
-  if(isObjEmpty(categories)) {
+  if(isObjEmpty(categories) && auth) {
     const categoryNames = Object.keys(categories);
     
     itemsCategories = categoryNames.map(categoryName => {
@@ -34,7 +34,8 @@ const ItemsDashboard = ({ categories, showInfoItem }) => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.products.products
+  categories: state.products.products,
+  auth: state.user.isAuth
 });
 
 export default connect(mapStateToProps)(ItemsDashboard);

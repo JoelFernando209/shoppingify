@@ -11,6 +11,8 @@ export {
 } from './creators/product';
 
 export {
+  activateEmptyList,
+  desactivateEmptyList,
   saveItemList,
   deleteItemList,
   getItemList

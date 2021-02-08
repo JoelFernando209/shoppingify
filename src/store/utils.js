@@ -1,6 +1,16 @@
 export const formatItem = (itemToAdd, categoryItem, updatedItemsList) => {
   if(categoryItem in updatedItemsList) {
-    updatedItemsList[categoryItem].items.push(itemToAdd);
+    const itemsList = [ ...updatedItemsList[categoryItem].items ];
+    
+    itemsList.push(itemToAdd);
+    
+    updatedItemsList = {
+      ...updatedItemsList,
+      [categoryItem]: {
+        ...updatedItemsList[categoryItem],
+        items: itemsList
+      }
+    };
   } else {
     updatedItemsList = {
       ...updatedItemsList,
@@ -11,8 +21,6 @@ export const formatItem = (itemToAdd, categoryItem, updatedItemsList) => {
       }
     }
   }
-  
-  console.log(updatedItemsList)
   
   return updatedItemsList;
 };

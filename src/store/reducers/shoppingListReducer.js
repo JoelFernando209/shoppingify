@@ -5,7 +5,8 @@ import { formatItem } from '../utils';
 const initialState = {
   itemsList: {},
   actualShoppingInfo: {},
-  shoppingHistory: []
+  shoppingHistory: [],
+  isShoppingEmpty: false
 };
 
 const addItemList = (state, action) => {
@@ -27,19 +28,23 @@ const addItemList = (state, action) => {
 export const deleteItemList = (state, action) => {
   let updatedItemsList = { ...state.itemsList };
   
-  const { categoryItem } = action.item;
+  const { categoryItem, id } = action.item;
+
+  const categoryItems = [ ...updatedItemsList[categoryItem].items ];
   
-  const categoryItems = updatedItemsList[categoryItem].items;
+  const resultArr = categoryItems.filter(element => element.id !== id);
   
-  const deleteIndex = categoryItems.findIndex(element => element.id === action.item.id);
-  
-  if(deleteIndex !== -1) {
-    categoryItems.splice(deleteIndex, 1)
-  }
+  const updatedResult = {
+    ...updatedItemsList,
+    [categoryItem]: {
+      ...updatedItemsList[categoryItem],
+      items: resultArr
+    }
+  };
   
   return {
     ...state,
-    itemsList: updatedItemsList
+    itemsList: updatedResult
   }
 };
 
@@ -75,8 +80,26 @@ const setItemList = (state, action) => {
   }
 };
 
+const activateEmptyList = state => {
+  return {
+    ...state,
+    isShoppingEmpty: true
+  }
+};
+
+const desactivateEmptyList = state => {
+  return {
+    ...state,
+    isShoppingEmpty: false
+  }
+};
+
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.DESACTIVATE_EMPTY_LIST: return desactivateEmptyList(state)
+    
+    case actionTypes.ACTIVATE_EMPTY_LIST: return activateEmptyList(state)
+    
     case actionTypes.SET_ITEM_LIST: return setItemList(state, action)
     
     case actionTypes.DELETE_ITEM_LIST: return deleteItemList(state, action)

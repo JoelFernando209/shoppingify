@@ -63,7 +63,8 @@ export const addShoppingItemDB = (item, endFunc) => {
     .add({
       categoryItem: item.categoryItem,
       nameItem: item.nameItem,
-      uid: item.uid
+      uid: item.uid,
+      pieces: 1
     })
     .then(() => {
       endFunc()
@@ -74,9 +75,36 @@ export const addShoppingItemDB = (item, endFunc) => {
 }
 
 export const getShoppingItemDB = endFunc => {
+  setFuncWhenUserLoaded((user, unsubscribe) => {
+    db.collection('shoppingListItems')
+      .where('uid', '==', user.uid)
+      .get()
+      .then(snapshot => {
+        endFunc(snapshot)
+      })
+      .then(unsubscribe)
+      .catch(err => {
+        console.log(err.message)
+      })
+  })
+};
+
+export const changePieceInShopping = (id, valuePieces) => {
   db.collection('shoppingListItems')
-    .get()
-    .then(snapshot => {
-      endFunc(snapshot)
+    .doc(id)
+    .update({
+      pieces: valuePieces
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+};
+
+export const removeShoppingItem = id => {
+  db.collection('shoppingListItems')
+    .doc(id)
+    .delete()
+    .catch(err => {
+      console.log(err.message)
     })
 };

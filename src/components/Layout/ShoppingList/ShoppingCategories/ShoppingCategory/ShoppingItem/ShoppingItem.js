@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ShoppingItemCount from './ShoppingItemCount/ShoppingItemCount';
+import ShoppingItemCount from '../../../../../../containers/Layout/ShoppingItemCount/ShoppingItemCount';
 
 import classes from './ShoppingItem.module.scss';
 
-const ShoppingItem = ({ id, value, pieces }) => {
+const ShoppingItem = ({ id, value, pieces, deleteItemHandler }) => {
   
   const idInput = `sh-item-${id}`;
   
@@ -15,10 +15,8 @@ const ShoppingItem = ({ id, value, pieces }) => {
         
         <div className={classes.ValueItem}>{value}</div>
       </label>
-      
-      <div className={classes.ShoppingItemCount}>
-        <ShoppingItemCount pieces={pieces} />
-      </div>
+
+      <ShoppingItemCount pieces={pieces} idItem={id} deleteItemHandler={deleteItemHandler} />
     </div>
   )
 }

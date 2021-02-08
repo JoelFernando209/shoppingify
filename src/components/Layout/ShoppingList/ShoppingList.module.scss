@@ -36,12 +36,6 @@
   }
 }
 
-.Categories {
-  height: 63%;
-  overflow-y: auto;
-  animation: openCategories 1s;
-}
-
 @keyframes openCategories {
   from {
     opacity: 0;

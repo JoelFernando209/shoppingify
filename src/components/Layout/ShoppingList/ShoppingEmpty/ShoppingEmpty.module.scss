@@ -1,0 +1,17 @@
+.ShoppingEmpty {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 63%;
+
+  img {
+    width: 14rem;
+    height: 14rem;
+  }
+  
+  div {
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+}

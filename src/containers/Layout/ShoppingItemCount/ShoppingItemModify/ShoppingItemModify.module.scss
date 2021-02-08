@@ -1,0 +1,48 @@
+.ShoppingItemModify {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.DeleteButtonContainer {
+  z-index: 1;
+  width: 20%;
+}
+
+.DeleteButtonIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.ModifyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #F9A109;
+  
+  background-color: white;
+  border-radius: .5rem;
+  margin-left: -.4rem;
+  z-index: 0;
+  width: 80%;
+}
+
+.SubstractPieces, .AddPieces {
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all .3s;
+  user-select: none;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.SubstractPieces {
+  
+}
+
+.AddPieces {
+  
+}

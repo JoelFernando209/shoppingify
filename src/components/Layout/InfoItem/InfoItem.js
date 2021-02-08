@@ -73,7 +73,7 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
       </div>
       
       <div className={classes.ImageContainer}>
-        { srcImg && <img className={classes.Image} src={srcImg} />}
+        { srcImg && <img className={classes.Image} src={srcImg} alt='Could not be loaded because of an invalid url.' />}
         
         {noImage}
       </div>

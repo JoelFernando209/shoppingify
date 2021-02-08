@@ -5,16 +5,16 @@ import classes from './ShoppingList.module.scss';
 
 import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
-import ShoppingCategory from './ShoppingCategory/ShoppingCategory';
 import AddListName from './AddListName/AddListName';
 import Spinner from '../../UI/Spinner/Spinner';
+import ShoppingEmpty from './ShoppingEmpty/ShoppingEmpty';
+import ShoppingCategories from './ShoppingCategories/ShoppingCategories';
 
 import { isObjEmpty } from '../../../utils/validation.utils';
-import { isUserAuth } from '../../../firebase/FirebaseUtils/firebase.auth';
 
 import * as actions from '../../../store/actions/index';
 
-const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems, auth }) => {
+const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems, auth, shoppingEmpty }) => {
   useEffect(() => {
     onSetItems();
   }, [onSetItems]);
@@ -24,21 +24,16 @@ const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, o
   if(isObjEmpty(items) && auth) {
     const itemNames = Object.keys(items);
     
-    shoppingCategories = (
-      <div className={classes.Categories}>
-        {
-          itemNames.map(itemName => {
-            return (
-              <ShoppingCategory
-                key={items[itemName].id}
-                title={items[itemName].categoryItem}
-                arrItem={items[itemName].items}
-              />
-            )
-          })
-        }
-      </div>
+    shoppingCategories = auth && (
+      <ShoppingCategories
+        itemNames={itemNames}
+        items={items}
+      />
     );
+  }
+  
+  if(shoppingEmpty) {
+    shoppingCategories = auth && <ShoppingEmpty />;
   }
   
   const classesShopping = [classes.ShoppingList]
@@ -64,7 +59,8 @@ const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, o
 
 const mapStateToProps = state => ({
   items: state.shopping.itemsList,
-  auth: state.user.isAuth
+  auth: state.user.isAuth,
+  shoppingEmpty: state.shopping.isShoppingEmpty
 });
 
 const mapDispatchToProps = dispatch => ({

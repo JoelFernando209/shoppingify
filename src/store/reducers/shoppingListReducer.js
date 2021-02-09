@@ -6,7 +6,8 @@ const initialState = {
   itemsList: {},
   actualShoppingInfo: {},
   shoppingHistory: [],
-  isShoppingEmpty: false
+  isShoppingEmpty: false,
+  nameShoppingList: 'Shopping List'
 };
 
 const addItemList = (state, action) => {

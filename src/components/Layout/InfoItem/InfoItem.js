@@ -8,6 +8,7 @@ import InfoControls from './InfoControls/InfoControls';
 import Spinner from '../../UI/Spinner/Spinner';
 
 import { isObjEmpty } from '../../../utils/validation.utils';
+import { setCurrentShoppingListInfo } from '../../../firebase/FirebaseUtils/firebase.firestore';
 
 import * as actions from '../../../store/actions/index';
 
@@ -23,7 +24,7 @@ const inputEntries = [
   'noteItem'
 ];
 
-const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onDeleteItem }) => {
+const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onDeleteItem, nameShopping, itemsList }) => {
   const classesInfo = [classes.InfoItem];
   
   if(status) {
@@ -34,6 +35,12 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
   
   const onAdditemAndCloseInfo = item => {
     onAddItem(item);
+    
+    setCurrentShoppingListInfo({
+      shoppingName: nameShopping,
+      items: itemsList,
+      creationDate: new Date()
+    });
     
     hideInfoItemHandler();
   };
@@ -90,9 +97,14 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
   )
 };
 
+const mapStateToProps = state => ({
+  nameShopping: state.shopping.nameShoppingList,
+  itemsList: state.shopping.itemsList
+})
+
 const mapDispatchToProps = dispatch => ({
   onAddItem: item => dispatch(actions.saveItemList(item)),
   onDeleteItem: product => dispatch(actions.deleteProduct(product))
 });
 
-export default connect(null, mapDispatchToProps)(InfoItem);
+export default connect(mapStateToProps, mapDispatchToProps)(InfoItem);

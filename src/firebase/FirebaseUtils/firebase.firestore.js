@@ -108,3 +108,20 @@ export const removeShoppingItem = id => {
       console.log(err.message)
     })
 };
+
+export const setCurrentShoppingListInfo = objInfo => {
+  const { shoppingName, items, creationDate } = objInfo;
+  const uidUser = getUidSync();
+  
+  db.collection('shoppingListCurrent')
+    .doc(uidUser)
+    .set({
+      shoppingName,
+      items,
+      creationDate,
+      uid: getUidSync()
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
+};

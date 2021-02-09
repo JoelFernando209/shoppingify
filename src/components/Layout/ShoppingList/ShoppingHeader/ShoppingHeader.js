@@ -1,15 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import CreateIcon from '../../../../assets/images/create-icon.svg';
 
 import classes from './ShoppingHeader.module.scss';
 
-const ShoppingHeader = () => (
+const ShoppingHeader = ({ shoppingName, setEditionMode }) => (
   <div className={classes.ShoppingHeader}>
-    Shopping list
+    {shoppingName}
     
-    <img src={CreateIcon} alt='Edit Shopping List' className={classes.CreateIcon} />
+    <img src={CreateIcon} alt='Edit Shopping List' className={classes.CreateIcon} onClick={setEditionMode.bind(null, true)} />
   </div>
 );
 
-export default ShoppingHeader;
+const mapStateToProps = state => ({
+  shoppingName: state.shopping.nameShoppingList
+});
+
+export default connect(mapStateToProps)(ShoppingHeader);

@@ -5,7 +5,7 @@ import classes from './ShoppingList.module.scss';
 
 import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
-import AddListName from './AddListName/AddListName';
+import AddListName from '../../../containers/AddListName/AddListName';
 import Spinner from '../../UI/Spinner/Spinner';
 import ShoppingEmpty from './ShoppingEmpty/ShoppingEmpty';
 import ShoppingCategories from './ShoppingCategories/ShoppingCategories';
@@ -14,7 +14,7 @@ import { isObjEmpty } from '../../../utils/validation.utils';
 
 import * as actions from '../../../store/actions/index';
 
-const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems, auth, shoppingEmpty }) => {
+const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems, auth, shoppingEmpty, editionMode, setEditionMode }) => {
   useEffect(() => {
     onSetItems();
   }, [onSetItems]);
@@ -48,7 +48,7 @@ const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, o
     <div className={classesShopping.join(' ')}>
       <PopupAddItem clicked={toggleItemStatus} />
       
-      <ShoppingHeader />
+      <ShoppingHeader setEditionMode={setEditionMode} />
       
       {shoppingCategories}
       

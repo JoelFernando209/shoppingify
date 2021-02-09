@@ -15,7 +15,9 @@ export {
   desactivateEmptyList,
   saveItemList,
   deleteItemList,
-  getItemList
+  getItemList,
+  getShoppingName,
+  saveNewShoppingName
 } from './creators/shoppingList';
 
 export {

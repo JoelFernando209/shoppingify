@@ -95,8 +95,17 @@ const desactivateEmptyList = state => {
   }
 };
 
+const setShoppingName = (state, action) => {
+  return {
+    ...state,
+    nameShoppingList: action.name
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.SET_SHOPPING_NAME: return setShoppingName(state, action)
+    
     case actionTypes.DESACTIVATE_EMPTY_LIST: return desactivateEmptyList(state)
     
     case actionTypes.ACTIVATE_EMPTY_LIST: return activateEmptyList(state)

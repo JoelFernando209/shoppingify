@@ -8,6 +8,7 @@ import InfoControls from './InfoControls/InfoControls';
 import Spinner from '../../UI/Spinner/Spinner';
 
 import { isObjEmpty } from '../../../utils/validation.utils';
+import { combineItemsInCategory } from '../../../utils/immutable.utils';
 import { setCurrentShoppingListInfo } from '../../../firebase/FirebaseUtils/firebase.firestore';
 
 import * as actions from '../../../store/actions/index';
@@ -38,7 +39,7 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
     
     setCurrentShoppingListInfo({
       shoppingName: nameShopping,
-      items: itemsList,
+      items: combineItemsInCategory(item, itemsList),
       creationDate: new Date()
     });
     

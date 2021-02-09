@@ -125,3 +125,29 @@ export const setCurrentShoppingListInfo = objInfo => {
       console.log(err.message);
     })
 };
+
+export const getCurrentShoppingListName = (user, unsubscribe, endFunc) => {
+  db.collection('shoppingListCurrent')
+    .doc(user.uid)
+    .get()
+    .then(doc => {
+      endFunc(doc.data().shoppingName);
+      
+      unsubscribe();
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+};
+
+export const changeCurrentShoppingListName = (uid, name, endFunc) => {
+  db.collection('shoppingListCurrent')
+    .doc(uid)
+    .update({
+      shoppingName: name
+    })
+    .then(endFunc)
+    .catch(err => {
+      console.log(err.message)
+    })
+};

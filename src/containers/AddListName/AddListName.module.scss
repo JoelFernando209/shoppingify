@@ -39,3 +39,15 @@ $heightInput: 4.5rem;
   font-weight: 700;
   color: white;
 }
+
+.Success, .Error {
+  font-size: 1rem;
+}
+
+.Success {
+  color: green;
+}
+
+.Error {
+  color: red;
+}

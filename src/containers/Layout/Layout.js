@@ -13,6 +13,7 @@ const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => 
   const [ addItemStatus, setAddItemStatus ] = useState(false);
   const [ authErr, setAuthErr ] = useState(null);
   const [ shoppingListPhone, setShoppingListPhone ] = useState(false);
+  const [ editionMode, setEditionMode ] = useState(false);
   
   const toggleItemStatusHandler = () => {
     setAddItemStatus(!addItemStatus);
@@ -37,7 +38,12 @@ const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => 
         {children}
       </div>
       
-      <ShoppingList statusShopping={shoppingListPhone} toggleItemStatus={toggleItemStatusHandler} />
+      <ShoppingList
+        statusShopping={shoppingListPhone}
+        toggleItemStatus={toggleItemStatusHandler}
+        editionMode={editionMode}
+        setEditionMode={setEditionMode}
+      />
       
       <ShoppingAddItem status={addItemStatus} toggleItemStatus={toggleItemStatusHandler} />
       

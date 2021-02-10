@@ -10,3 +10,5 @@ export const toggleShakeClass = (stateArr, changeState, shakeClass) => {
   
   changeState(stateArrClone);
 }
+
+export const validateClass = (condition, ifTrueClass, ifFalseClass) => condition ? ifTrueClass : ifFalseClass;

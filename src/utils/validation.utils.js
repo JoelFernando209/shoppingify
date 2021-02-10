@@ -107,3 +107,19 @@ export const validateCategory = (category, setError) => {
 }
 
 export const isObjEmpty = obj => Object.keys(obj).length > 0;
+
+export const isShoppingEmpty = list => {
+  const listNames = Object.keys(list);
+  
+  return listNames.every(currentName => list[currentName].items.length <= 0);
+};
+
+export const isIdNotRepeteadInList = (id, list) => {
+  const listNames = Object.keys(list);
+  
+  return listNames.every(currentName => {
+    const listItems = list[currentName].items;
+    
+    return listItems.every(item => item.id !== id);
+  });
+};

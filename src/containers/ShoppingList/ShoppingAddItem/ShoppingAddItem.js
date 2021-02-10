@@ -6,9 +6,9 @@ import ShoppingAddControls from './ShoppingAddControls/ShoppingAddControls';
 
 import classes from './ShoppingAddItem.module.scss';
 
-import { validateName, validateCategory } from '../../utils/validation.utils';
+import { validateName, validateCategory } from '../../../utils/validation.utils';
 
-import * as actions from '../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 
 const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
   const [ nameItem, setNameItem ] = useState('');

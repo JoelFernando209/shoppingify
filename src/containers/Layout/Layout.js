@@ -6,7 +6,7 @@ import ShoppingList from '../../components/Layout/ShoppingList/ShoppingList';
 import Sidebar from '../../components/Layout/Sidebar/Sidebar';
 import IngresarPopup from '../../components/IngresarPopup/IngresarPopup';
 import NotEmailAuthPopup from '../../components/NotEmailAuthPopup/NotEmailAuthPopup';
-import ShoppingAddItem from '../../containers/ShoppingAddItem/ShoppingAddItem';
+import ShoppingAddItem from '../../containers/ShoppingList/ShoppingAddItem/ShoppingAddItem';
 import InfoItem from '../../components/Layout/InfoItem/InfoItem';
 
 const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => {
@@ -21,6 +21,10 @@ const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => 
   
   const toggleShoppingListPhone = () => {
     setShoppingListPhone(!shoppingListPhone);
+  };
+  
+  const toggleEditionMode = () => {
+    setEditionMode(!editionMode);
   };
   
   return (
@@ -42,7 +46,7 @@ const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => 
         statusShopping={shoppingListPhone}
         toggleItemStatus={toggleItemStatusHandler}
         editionMode={editionMode}
-        setEditionMode={setEditionMode}
+        toggleEditionMode={toggleEditionMode}
       />
       
       <ShoppingAddItem status={addItemStatus} toggleItemStatus={toggleItemStatusHandler} />

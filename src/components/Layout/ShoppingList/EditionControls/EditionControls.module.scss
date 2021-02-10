@@ -1,0 +1,22 @@
+.EditionControls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 20;
+  
+  background-color: white;
+  padding: 2rem;
+  height: 8rem;
+  
+  display: flex;
+  justify-content: space-between;
+  
+  transition: all .3s ease;
+  
+  button {
+    width: 45%;
+  }
+}

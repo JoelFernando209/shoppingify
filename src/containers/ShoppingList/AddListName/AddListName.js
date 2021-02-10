@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { validateName } from '../../utils/validation.utils';
+import { validateName } from '../../../utils/validation.utils';
 
 import classes from './AddListName.module.scss';
 
-import * as actions from '../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 
 const AddListName = ({ onSaveNewShoppingName }) => {
   const [ inputName, setInputName ] = useState('');

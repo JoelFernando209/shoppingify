@@ -5,11 +5,11 @@ import CreateIcon from '../../../../assets/images/create-icon.svg';
 
 import classes from './ShoppingHeader.module.scss';
 
-const ShoppingHeader = ({ shoppingName, setEditionMode }) => (
+const ShoppingHeader = ({ shoppingName, toggleEditionMode }) => (
   <div className={classes.ShoppingHeader}>
     {shoppingName}
     
-    <img src={CreateIcon} alt='Edit Shopping List' className={classes.CreateIcon} onClick={setEditionMode.bind(null, true)} />
+    <img src={CreateIcon} alt='Edit Shopping List' className={classes.CreateIcon} onClick={toggleEditionMode} />
   </div>
 );
 

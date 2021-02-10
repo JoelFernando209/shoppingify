@@ -5,7 +5,7 @@ import classes from './ShoppingCategory.module.scss';
 
 import ShoppingItem from './ShoppingItem/ShoppingItem';
 
-import * as actions from '../../../../../store/actions/index';
+import * as actions from '../../../../../../store/actions/index';
 
 const ShoppingCategory = ({ title, arrItem, onDeleteItem }) => {
   const shoppingItems = arrItem.map(item => {

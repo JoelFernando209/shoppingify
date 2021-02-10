@@ -15,6 +15,7 @@ export {
   desactivateEmptyList,
   saveItemList,
   deleteItemList,
+  removeItemListDB,
   getItemList,
   getShoppingName,
   saveNewShoppingName

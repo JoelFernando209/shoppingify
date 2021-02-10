@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ShoppingItemCount from '../../../../../../containers/Layout/ShoppingItemCount/ShoppingItemCount';
+import ShoppingItemCount from '../../../../../../../containers/Layout/ShoppingItemCount/ShoppingItemCount';
 
 import classes from './ShoppingItem.module.scss';
 

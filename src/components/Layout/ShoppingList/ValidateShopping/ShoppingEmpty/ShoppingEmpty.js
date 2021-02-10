@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PersonCart from '../../../../assets/images/person-cart.svg';
+import PersonCart from '../../../../../assets/images/person-cart.svg';
 
 import classes from './ShoppingEmpty.module.scss';
 

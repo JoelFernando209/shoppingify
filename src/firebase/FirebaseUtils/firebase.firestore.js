@@ -58,19 +58,14 @@ export const snapshotProducts = funcSnapshot => {
   });
 };
 
-export const addShoppingItemDB = (item, endFunc) => {
-  db.collection('shoppingListItems')
-    .add({
+export const addShoppingItemDB = (item, idItem) => {
+  return db.collection('shoppingListItems')
+    .doc(idItem)
+    .set({
       categoryItem: item.categoryItem,
       nameItem: item.nameItem,
       uid: item.uid,
       pieces: 1
-    })
-    .then(() => {
-      endFunc()
-    })
-    .catch(err => {
-      console.log(err.message);
     })
 }
 
@@ -101,12 +96,9 @@ export const changePieceInShopping = (id, valuePieces) => {
 };
 
 export const removeShoppingItem = id => {
-  db.collection('shoppingListItems')
+  return db.collection('shoppingListItems')
     .doc(id)
     .delete()
-    .catch(err => {
-      console.log(err.message)
-    })
 };
 
 export const setCurrentShoppingListInfo = objInfo => {

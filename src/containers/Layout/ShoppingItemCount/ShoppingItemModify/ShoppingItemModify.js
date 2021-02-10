@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import DeleteIcon from '../../../../assets/images/delete-icon.svg';
 
@@ -6,13 +7,13 @@ import Button from '../../../../components/UI/Button/Button';
 
 import classes from './ShoppingItemModify.module.scss';
 
+import * as actions from '../../../../store/actions/index';
+
 import { removeShoppingItem } from '../../../../firebase/FirebaseUtils/firebase.firestore';
 
-const ShoppingItemModify = ({ children, clicked, onAddPiece, onSubstractPiece, onDeleteItem, idItem }) => {
+const ShoppingItemModify = ({ children, clicked, onAddPiece, onSubstractPiece, onDeleteItem, idItem, onRemoveItemListDB }) => {
   const deleteItemHandler = () => {
-    onDeleteItem();
-    
-    removeShoppingItem(idItem);
+    onRemoveItemListDB(idItem, onDeleteItem)
   };
   
   return (
@@ -38,4 +39,8 @@ const ShoppingItemModify = ({ children, clicked, onAddPiece, onSubstractPiece, o
   )
 };
 
-export default ShoppingItemModify;
+const mapDispatchToProps = dispatch => ({
+  onRemoveItemListDB: (idItem, endFunc) => dispatch(actions.removeItemListDB(idItem, endFunc))
+});
+
+export default connect(null, mapDispatchToProps)(ShoppingItemModify);

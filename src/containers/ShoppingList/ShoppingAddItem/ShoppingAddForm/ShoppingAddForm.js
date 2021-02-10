@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from '../../../components/UI/Input/Input';
+import Input from '../../../../components/UI/Input/Input';
 
 import classes from './ShoppingAddForm.module.scss';
 

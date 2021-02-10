@@ -5,66 +5,45 @@ import classes from './ShoppingList.module.scss';
 
 import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
-import AddListName from '../../../containers/AddListName/AddListName';
-import Spinner from '../../UI/Spinner/Spinner';
-import ShoppingEmpty from './ShoppingEmpty/ShoppingEmpty';
-import ShoppingCategories from './ShoppingCategories/ShoppingCategories';
+import AddListName from '../../../containers/ShoppingList/AddListName/AddListName';
+import EditionControls from './EditionControls/EditionControls';
+import ValidateShopping from './ValidateShopping/ValidateShopping';
 
-import { isObjEmpty } from '../../../utils/validation.utils';
+import { validateClass } from '../../../utils/style.utils';
 
 import * as actions from '../../../store/actions/index';
 
-const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, items, onSetItems, auth, shoppingEmpty, editionMode, setEditionMode }) => {
+const ShoppingList = ({ addItemState, toggleItemStatus, statusShopping, onSetItems, editionMode, toggleEditionMode }) => {
   useEffect(() => {
     onSetItems();
   }, [onSetItems]);
   
-  let shoppingCategories = auth && <Spinner />;
+  const classesShopping = [classes.ShoppingList];
   
-  if(isObjEmpty(items) && auth) {
-    const itemNames = Object.keys(items);
-    
-    shoppingCategories = auth && (
-      <ShoppingCategories
-        itemNames={itemNames}
-        items={items}
-      />
-    );
-  }
-  
-  if(shoppingEmpty) {
-    shoppingCategories = auth && <ShoppingEmpty />;
-  }
-  
-  const classesShopping = [classes.ShoppingList]
-  
-  if(statusShopping) {
-    classesShopping.push(classes.PhoneActive);
-  } else {
-    classesShopping.push(classes.PhoneInactive);
-  }
+  classesShopping.push(validateClass(
+    statusShopping,
+    classes.PhoneActive,
+    classes.PhoneInactive
+  ));
   
   return (
     <div className={classesShopping.join(' ')}>
       <PopupAddItem clicked={toggleItemStatus} />
       
-      <ShoppingHeader setEditionMode={setEditionMode} />
+      <ShoppingHeader
+        toggleEditionMode={toggleEditionMode}
+      />
       
-      {shoppingCategories}
+      <ValidateShopping />
       
       <AddListName />
+      <EditionControls statusEdition={editionMode} />
     </div>
   );
 };
-
-const mapStateToProps = state => ({
-  items: state.shopping.itemsList,
-  auth: state.user.isAuth,
-  shoppingEmpty: state.shopping.isShoppingEmpty
-});
 
 const mapDispatchToProps = dispatch => ({
   onSetItems: () => dispatch(actions.getItemList())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);
+export default connect(null, mapDispatchToProps)(ShoppingList);

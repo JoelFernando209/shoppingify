@@ -1,6 +1,7 @@
 import * as actionTypes from '../actionTypes';
-import { addShoppingItemDB, getShoppingItemDB, getCurrentShoppingListName, changeCurrentShoppingListName } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { addShoppingItemDB, getShoppingItemDB, getCurrentShoppingListName, changeCurrentShoppingListName, removeShoppingItem } from '../../../firebase/FirebaseUtils/firebase.firestore';
 import { setFuncWhenUserLoaded, getUidSync } from '../../../firebase/FirebaseUtils/firebase.auth';
+import { isShoppingEmpty } from '../../../utils/validation.utils';
 
 export const activateEmptyList = () => ({
   type: actionTypes.ACTIVATE_EMPTY_LIST
@@ -15,11 +16,18 @@ export const addItemList = item => ({
   item
 });
 
-export const saveItemList = item => {
-  return dispatch => {
-    addShoppingItemDB(item, () => {
-      dispatch(addItemList(item))
-    })
+export const saveItemList = (item, idItem) => {
+  return (dispatch, getState) => {
+    addShoppingItemDB(item, idItem)
+      .then(() => dispatch(addItemList(item)))
+      .then(() => {
+        if(!(isShoppingEmpty(getState().shopping.itemsList))) {
+          dispatch(desactivateEmptyList());
+        }
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
   };
 }
 
@@ -27,6 +35,25 @@ export const deleteItemList = item => ({
   type: actionTypes.DELETE_ITEM_LIST,
   item
 });
+
+export const removeItemListDB = (idItem, endFunc) => {
+  return (dispatch, getState) => {
+    endFunc()
+    
+    removeShoppingItem(idItem)
+      .then(() => {
+        console.log('Borrado correctamente', idItem);
+      })
+      .then(() => {
+        if(isShoppingEmpty(getState().shopping.itemsList)) {
+          dispatch(activateEmptyList());
+        }
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+  };
+}
 
 export const setItemList = ref => ({
   type: actionTypes.SET_ITEM_LIST,

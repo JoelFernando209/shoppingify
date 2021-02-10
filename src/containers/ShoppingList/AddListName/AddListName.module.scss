@@ -38,6 +38,22 @@ $heightInput: 4.5rem;
   font-family: inherit;
   font-weight: 700;
   color: white;
+  cursor: pointer;
+  transition: all .3s;
+  
+  &:hover {
+    background-color: darken(#F9A109, 5%);
+    border: 2px solid darken(#F9A109, 5%);
+  }
+  
+  &:active {
+    background-color: darken(#F9A109, 10%);
+    border: 2px solid darken(#F9A109, 10%);
+  }
+  
+  &:focus {
+    outline: none;
+  }
 }
 
 .Success, .Error {

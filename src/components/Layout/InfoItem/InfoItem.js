@@ -7,8 +7,9 @@ import InputInfo from './InputInfo/InputInfo';
 import InfoControls from './InfoControls/InfoControls';
 import Spinner from '../../UI/Spinner/Spinner';
 
-import { isObjEmpty } from '../../../utils/validation.utils';
+import { isObjEmpty, isIdNotRepeteadInList } from '../../../utils/validation.utils';
 import { combineItemsInCategory } from '../../../utils/immutable.utils';
+import { validateClass } from '../../../utils/style.utils';
 import { setCurrentShoppingListInfo } from '../../../firebase/FirebaseUtils/firebase.firestore';
 
 import * as actions from '../../../store/actions/index';
@@ -28,20 +29,22 @@ const inputEntries = [
 const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onDeleteItem, nameShopping, itemsList }) => {
   const classesInfo = [classes.InfoItem];
   
-  if(status) {
-    classesInfo.push(classes.StyleActive);
-  } else {
-    classesInfo.push(classes.StyleInactive);
-  }
+  classesInfo.push(validateClass(
+    status,
+    classes.StyleActive,
+    classes.StyleInactive
+  ))
   
   const onAdditemAndCloseInfo = item => {
-    onAddItem(item);
-    
-    setCurrentShoppingListInfo({
-      shoppingName: nameShopping,
-      items: combineItemsInCategory(item, itemsList),
-      creationDate: new Date()
-    });
+    if(isIdNotRepeteadInList(item.id, itemsList)) {
+      onAddItem(item, item.id);
+      
+      setCurrentShoppingListInfo({
+        shoppingName: nameShopping,
+        items: combineItemsInCategory(item, itemsList),
+        creationDate: new Date()
+      });
+    }
     
     hideInfoItemHandler();
   };
@@ -104,7 +107,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onAddItem: item => dispatch(actions.saveItemList(item)),
+  onAddItem: (item, idItem) => dispatch(actions.saveItemList(item, idItem)),
   onDeleteItem: product => dispatch(actions.deleteProduct(product))
 });
 

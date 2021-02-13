@@ -8,6 +8,13 @@ export const setProducts = snapshotProducts => {
   }
 };
 
+export const setProductsSync = newProducts => {
+  return {
+    type: actionTypes.SET_PRODUCTS_SYNC,
+    newProducts
+  }
+}
+
 export const getProducts = () => {
   return dispatch => {
     snapshotProducts(snapshot => {

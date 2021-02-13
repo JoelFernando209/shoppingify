@@ -1,0 +1,3 @@
+const filterProducts = (searchword, list) => {
+  
+};

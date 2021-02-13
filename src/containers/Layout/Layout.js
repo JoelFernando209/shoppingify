@@ -7,7 +7,7 @@ import Sidebar from '../../components/Layout/Sidebar/Sidebar';
 import IngresarPopup from '../../components/IngresarPopup/IngresarPopup';
 import NotEmailAuthPopup from '../../components/NotEmailAuthPopup/NotEmailAuthPopup';
 import ShoppingAddItem from '../../containers/ShoppingList/ShoppingAddItem/ShoppingAddItem';
-import InfoItem from '../../components/Layout/InfoItem/InfoItem';
+import InfoItem from './InfoItem/InfoItem';
 
 const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => {
   const [ addItemStatus, setAddItemStatus ] = useState(false);

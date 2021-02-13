@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
  
 import classes from './InfoItem.module.scss';
 
 import InputInfo from './InputInfo/InputInfo';
 import InfoControls from './InfoControls/InfoControls';
-import Spinner from '../../UI/Spinner/Spinner';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import ConfirmPopup from '../../UI/ConfirmPopup/ConfirmPopup';
 
 import { isObjEmpty, isIdNotRepeteadInList } from '../../../utils/validation.utils';
 import { combineItemsInCategory } from '../../../utils/immutable.utils';
@@ -26,7 +27,17 @@ const inputEntries = [
   'noteItem'
 ];
 
-const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onDeleteItem, nameShopping, itemsList }) => {
+const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onDeleteItem, nameShopping, itemsList, onRemoveItemList, onDeleteItemList }) => {
+  const [ confirmStatus, setConfirmStatus ] = useState(false);
+  
+  const activateConfirm = () => {
+    setConfirmStatus(true);
+  };
+  
+  const desactivateConfirm = () => {
+    setConfirmStatus(false);
+  };
+  
   const classesInfo = [classes.InfoItem];
   
   classesInfo.push(validateClass(
@@ -52,6 +63,10 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
   const onDeleteItemAndCloseInfo = item => {
     onDeleteItem(item);
     
+    if(!isIdNotRepeteadInList(item.id, itemsList)) {
+      onRemoveItemList(item.id, onDeleteItemList.bind(null, item));
+    }
+    
     hideInfoItemHandler();
   }
   
@@ -76,28 +91,37 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
   }
   
   return (
-    <div className={classesInfo.join(' ')}>
-      <div className={classes.GoBack} onClick={hideInfoItemHandler}>
-        &#8592;
-        
-        back
-      </div>
-      
-      <div className={classes.ImageContainer}>
-        { srcImg && <img className={classes.Image} src={srcImg} alt='Could not be loaded because of an invalid url.' />}
-        
-        {noImage}
-      </div>
-      
-      <div className={classes.Inputs}>
-        {inputsInfo}
-      </div>
-      
-      <InfoControls
-        clickedAdd={onAdditemAndCloseInfo.bind(null, currentInfoItem)}
-        clickedDelete={onDeleteItemAndCloseInfo.bind(null, currentInfoItem)}
+    <>
+      <ConfirmPopup
+        warning='Are you sure that you want to delete this item?'
+        status={confirmStatus}
+        desactivate={desactivateConfirm}
+        onConfirm={onDeleteItemAndCloseInfo.bind(null, currentInfoItem)}
       />
-    </div>
+      
+      <div className={classesInfo.join(' ')}>
+        <div className={classes.GoBack} onClick={hideInfoItemHandler}>
+          &#8592;
+          
+          back
+        </div>
+        
+        <div className={classes.ImageContainer}>
+          { srcImg && <img className={classes.Image} src={srcImg} alt='Could not be loaded because of an invalid url.' />}
+          
+          {noImage}
+        </div>
+        
+        <div className={classes.Inputs}>
+          {inputsInfo}
+        </div>
+        
+        <InfoControls
+          clickedAdd={onAdditemAndCloseInfo.bind(null, currentInfoItem)}
+          clickedDelete={activateConfirm}
+        />
+      </div>
+    </>
   )
 };
 
@@ -108,7 +132,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onAddItem: (item, idItem) => dispatch(actions.saveItemList(item, idItem)),
-  onDeleteItem: product => dispatch(actions.deleteProduct(product))
+  onDeleteItem: product => dispatch(actions.deleteProduct(product)),
+  onRemoveItemList: (idItem, endFunc) => dispatch(actions.removeItemListDB(idItem, endFunc)),
+  onDeleteItemList: item => dispatch(actions.deleteItemList(item))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InfoItem);

@@ -9,11 +9,13 @@ import classes from './ShoppingItemModify.module.scss';
 
 import * as actions from '../../../../store/actions/index';
 
-import { removeShoppingItem } from '../../../../firebase/FirebaseUtils/firebase.firestore';
+import { removeShoppingItem, deleteCurrentShoppingListItem } from '../../../../firebase/FirebaseUtils/firebase.firestore';
 
 const ShoppingItemModify = ({ children, clicked, onAddPiece, onSubstractPiece, onDeleteItem, idItem, onRemoveItemListDB }) => {
   const deleteItemHandler = () => {
     onRemoveItemListDB(idItem, onDeleteItem)
+    
+    deleteCurrentShoppingListItem(idItem);
   };
   
   return (

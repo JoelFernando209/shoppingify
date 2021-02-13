@@ -1,0 +1,43 @@
+.ConfirmPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+
+  background-color: white;
+  border-radius: 2rem;
+  z-index: 600;
+  padding: 2rem;
+  transition: all .3s;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.CancelIcon {
+  margin-left: auto;
+  user-select: none;
+  cursor: pointer;
+  
+  &:hover {
+    font-weight: 600;
+  }
+}
+
+.Warning {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  width: 50%;
+  
+  & > * {
+    width: 48%;
+  }
+}

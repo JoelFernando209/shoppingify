@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../../UI/Button/Button';
+import Button from '../../../../components/UI/Button/Button';
 
 import classes from './InfoControls.module.scss';
 

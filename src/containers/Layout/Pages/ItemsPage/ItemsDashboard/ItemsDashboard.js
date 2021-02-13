@@ -6,24 +6,35 @@ import Spinner from '../../../../../components/UI/Spinner/Spinner';
 
 import { isObjEmpty } from '../../../../../utils/validation.utils';
 
-const ItemsDashboard = ({ categories, showInfoItem, auth }) => {
+const ItemsDashboard = ({ categories, showInfoItem, auth, searchProducts }) => {
   let itemsCategories = auth && <Spinner />;
 
-  if(isObjEmpty(categories) && auth) {
-    const categoryNames = Object.keys(categories);
-    
-    itemsCategories = categoryNames.map(categoryName => {
-      if(categories[categoryName].items.length > 0) {
+  const setCategoryNames = (objNames, obj) => {
+    return objNames.map(categoryName => {
+      if(obj[categoryName].items.length > 0) {
         return (
           <ItemsCategory
-            key={categories[categoryName].id}
-            titleCategory={categories[categoryName].categoryName}
-            arrItems={categories[categoryName].items}
+            key={obj[categoryName].id}
+            titleCategory={obj[categoryName].categoryName}
+            arrItems={obj[categoryName].items}
             showInfoItemHandler={showInfoItem}
           />
         )
       }
     })
+  };
+
+  if(isObjEmpty(categories) && auth) {
+
+    if(Object.keys(searchProducts).length > 0) {
+      const categoryNames = Object.keys(searchProducts);
+      
+      itemsCategories = setCategoryNames(categoryNames, searchProducts);
+    } else {
+      const categoryNames = Object.keys(categories);
+      
+      itemsCategories = setCategoryNames(categoryNames, categories);
+    }
   }
   
   return (

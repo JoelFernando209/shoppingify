@@ -27,7 +27,7 @@ export const addItemDB = (objInfo, endFunc) => {
       endFunc(productInfo)
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.message);
       setError({ message: err.message, type: 'error' })
     })
 };
@@ -38,6 +38,9 @@ export const removeItemDB = (idItem, endFunc) => {
     .delete()
     .then(() => {
       endFunc();
+    })
+    .catch(err => {
+      console.log(err.message)
     })
 };
 
@@ -66,6 +69,9 @@ export const addShoppingItemDB = (item, idItem) => {
       nameItem: item.nameItem,
       uid: item.uid,
       pieces: 1
+    })
+    .catch(err => {
+      console.log(err.message)
     })
 }
 
@@ -99,11 +105,16 @@ export const removeShoppingItem = id => {
   return db.collection('shoppingListItems')
     .doc(id)
     .delete()
+    .catch(err => {
+      console.log(err.message)
+    })
 };
 
 export const setCurrentShoppingListInfo = objInfo => {
   const { shoppingName, items, creationDate } = objInfo;
   const uidUser = getUidSync();
+  
+  console.log(items);
   
   db.collection('shoppingListCurrent')
     .doc(uidUser)
@@ -116,6 +127,10 @@ export const setCurrentShoppingListInfo = objInfo => {
     .catch(err => {
       console.log(err.message);
     })
+};
+
+export const deleteCurrentShoppingListItem = idItem => {
+  
 };
 
 export const getCurrentShoppingListName = (user, unsubscribe, endFunc) => {

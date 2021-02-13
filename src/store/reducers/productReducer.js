@@ -34,6 +34,11 @@ const setProducts = ({ snapshot }) => {
   }
 };
 
+const setProductsSync = (state, action) => ({
+  ...state,
+  products: action.newProducts
+});
+
 const addProduct = (state, action) => {
   const { products } = state;
   const { categoryItem } = action.product;
@@ -93,6 +98,8 @@ const removeProduct = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.SET_PRODUCTS_SYNC: return setProductsSync(state, action);
+    
     case actionTypes.REMOVE_PRODUCT: return removeProduct(state, action)
     
     case actionTypes.SET_PRODUCTS: return setProducts(action)

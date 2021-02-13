@@ -7,7 +7,8 @@ export {
 export {
   getProducts,
   setProduct,
-  deleteProduct
+  deleteProduct,
+  setProductsSync
 } from './creators/product';
 
 export {

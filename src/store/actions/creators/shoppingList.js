@@ -42,9 +42,6 @@ export const removeItemListDB = (idItem, endFunc) => {
     
     removeShoppingItem(idItem)
       .then(() => {
-        console.log('Borrado correctamente', idItem);
-      })
-      .then(() => {
         if(isShoppingEmpty(getState().shopping.itemsList)) {
           dispatch(activateEmptyList());
         }

@@ -62,3 +62,12 @@
     background-color: darken(#FAFAFE, 5%);
   }
 }
+
+.danger {
+  background-color: #EB5757;
+  color: white;
+  
+  &:hover {
+    background-color: darken(#EB5757, 5%);
+  }
+}

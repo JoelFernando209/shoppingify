@@ -33,7 +33,7 @@ const App = ({ onSetPopupStatus, onCheckAuth, onSetShoppingName }) => {
     checkIfUserAuth();
     onCheckAuth();
     onSetShoppingName();
-  }, []);
+  }, [onCheckAuth, onSetShoppingName]);
   
   return (
     <Layout

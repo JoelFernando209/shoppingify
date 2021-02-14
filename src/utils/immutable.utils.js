@@ -4,12 +4,18 @@ export const combineItemsInCategory = (item, objToCombine) => {
   if(objToCombine[categoryItem]) {
     return {
       ...objToCombine,
-      [categoryItem]: objToCombine[categoryItem].items.concat(item)
+      [categoryItem]: {
+        ...objToCombine[categoryItem],
+        items: objToCombine[categoryItem].items.concat(item)
+      }
     };
   } else {
     return {
       ...objToCombine,
-      [categoryItem]: [item]
+      [categoryItem]: {
+        ...objToCombine[categoryItem],
+        items: [item]
+      }
     };
   }
 };

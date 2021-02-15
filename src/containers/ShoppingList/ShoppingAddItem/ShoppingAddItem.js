@@ -6,11 +6,11 @@ import ShoppingAddControls from './ShoppingAddControls/ShoppingAddControls';
 
 import classes from './ShoppingAddItem.module.scss';
 
-import { validateName, validateCategory } from '../../../utils/validation.utils';
+import { validateName, validateCategory, isItemNameNotRepeated } from '../../../utils/validation.utils';
 
 import * as actions from '../../../store/actions/index';
 
-const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
+const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct, products }) => {
   const [ nameItem, setNameItem ] = useState('');
   const [ noteItem, setNoteItem ] = useState('');
   const [ imageURL, setImageURL ] = useState('');
@@ -37,8 +37,9 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
   const submitAddItem = () => {
     const isNameValid = validateName(nameItem, setAddError);
     const isCategoryValid = validateCategory(categoryItem, setAddError);
+    const isNameNotRepeated = isItemNameNotRepeated(nameItem, products, setAddError);
     
-    if(isNameValid && isCategoryValid) {
+    if(isNameValid && isCategoryValid && isNameNotRepeated) {
       const itemInfo = {
         dataDoc: {
           nameItem,
@@ -56,7 +57,6 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
   useEffect(() => {
     console.log('[ShoppingAddItem.js] renderized')
   })
-  
   
   const classesAdd = [classes.ShoppingAddItem];
   
@@ -94,8 +94,12 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct }) => {
   )
 };
 
+const mapStateToProps = state => ({
+  products: state.products.products
+});
+
 const mapDispatchToProps = dispatch => ({
   onSetProduct: product => dispatch(actions.setProduct(product))
 });
 
-export default connect(null, mapDispatchToProps)(ShoppingAddItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingAddItem);

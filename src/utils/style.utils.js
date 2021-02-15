@@ -12,3 +12,15 @@ export const toggleShakeClass = (stateArr, changeState, shakeClass) => {
 }
 
 export const validateClass = (condition, ifTrueClass, ifFalseClass) => condition ? ifTrueClass : ifFalseClass;
+
+export const setStateMethods = (state, changeState) => ({
+  desactivate: () => {
+    changeState(false);
+  },
+  activate: () => {
+    changeState(true);
+  },
+  toggle: () => {
+    changeState(!state);
+  }
+});

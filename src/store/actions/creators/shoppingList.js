@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import { addShoppingItemDB, getShoppingItemDB, getCurrentShoppingListName, changeCurrentShoppingListName, removeShoppingItem } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { addShoppingItemDB, getShoppingItemDB, getCurrentShoppingListName, changeCurrentShoppingListName, removeShoppingItem, deleteCurrentShoppingList } from '../../../firebase/FirebaseUtils/firebase.firestore';
 import { setFuncWhenUserLoaded, getUidSync } from '../../../firebase/FirebaseUtils/firebase.auth';
 import { isShoppingEmpty } from '../../../utils/validation.utils';
 
@@ -91,3 +91,15 @@ export const saveNewShoppingName = name => {
     })
   };
 };
+
+export const resetList = () => ({
+  type: actionTypes.RESET_LIST
+});
+
+export const deleteList = () => {
+  return dispatch => {
+    deleteCurrentShoppingList(() => {
+      dispatch(resetList())
+    });
+  };
+}

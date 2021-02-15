@@ -177,7 +177,9 @@ export const getCurrentShoppingListName = (user, unsubscribe, endFunc) => {
     .doc(user.uid)
     .get()
     .then(doc => {
-      endFunc(doc.data().shoppingName);
+      if(doc.exists) {
+        endFunc(doc.data().shoppingName);
+      }
       
       unsubscribe();
     })
@@ -195,5 +197,53 @@ export const changeCurrentShoppingListName = (uid, name, endFunc) => {
     .then(endFunc)
     .catch(err => {
       console.log(err.message)
+    })
+};
+
+export const deleteCurrentShoppingList = endFunc => {
+  const uidUser = getUidSync();
+  
+  db.collection('shoppingListCurrent')
+    .doc(uidUser)
+    .delete()
+    .then(endFunc)
+};
+
+export const deleteAllShoppingListItems = () => {
+  const uidUser = getUidSync();
+  
+  const ref = db.collection('shoppingListItems')
+  
+  ref
+    .where('uid', '==', uidUser)
+    .get()
+    .then(collection => {
+      collection.docs.forEach(doc => {
+        ref.doc(doc.id).delete()
+      })
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+};
+
+export const setListInShoppingHistory = status => {
+  const uidUser = getUidSync();
+   
+  return db.collection('shoppingListCurrent')
+    .doc(uidUser)
+    .get()
+    .then(doc => {
+      db.collection('shoppingListHistory')
+        .add({
+          ...doc.data(),
+          status
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
+    })
+    .catch(err => {
+      console.log(err.message);
     })
 };

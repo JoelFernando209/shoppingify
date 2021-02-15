@@ -6,7 +6,7 @@ import classes from './InfoItem.module.scss';
 import InputInfo from './InputInfo/InputInfo';
 import InfoControls from './InfoControls/InfoControls';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import ConfirmPopup from '../../UI/ConfirmPopup/ConfirmPopup';
+import ConfirmPopup from '../../../components/UI/ConfirmPopup/ConfirmPopup';
 
 import { isObjEmpty, isIdNotRepeteadInList } from '../../../utils/validation.utils';
 import { combineItemsInCategory } from '../../../utils/immutable.utils';

@@ -19,7 +19,8 @@ export {
   removeItemListDB,
   getItemList,
   getShoppingName,
-  saveNewShoppingName
+  saveNewShoppingName,
+  deleteList
 } from './creators/shoppingList';
 
 export {

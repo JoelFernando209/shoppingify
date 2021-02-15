@@ -6,7 +6,7 @@ import classes from './ShoppingList.module.scss';
 import PopupAddItem from './PopupAddItem/PopupAddItem';
 import ShoppingHeader from './ShoppingHeader/ShoppingHeader';
 import AddListName from '../../../containers/ShoppingList/AddListName/AddListName';
-import EditionControls from './EditionControls/EditionControls';
+import EditionControls from '../../../containers/ShoppingList/EditionControls/EditionControls';
 import ValidateShopping from './ValidateShopping/ValidateShopping';
 
 import { validateClass } from '../../../utils/style.utils';

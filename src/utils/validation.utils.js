@@ -106,6 +106,7 @@ export const validateCategory = (category, setError) => {
   return isValid;
 }
 
+
 export const isObjEmpty = obj => Object.keys(obj).length > 0;
 
 export const isShoppingEmpty = list => {
@@ -114,12 +115,24 @@ export const isShoppingEmpty = list => {
   return listNames.every(currentName => list[currentName].items.length <= 0);
 };
 
-export const isIdNotRepeteadInList = (id, list) => {
+const checkIfNotRepeated = (propToCheck, itemToDontRepeat, list) => {
   const listNames = Object.keys(list);
   
   return listNames.every(currentName => {
     const listItems = list[currentName].items;
     
-    return listItems.every(item => item.id !== id);
+    return listItems.every(item => item[propToCheck] !== itemToDontRepeat);
   });
+}
+
+export const isItemNameNotRepeated = (name, list, setError) => {
+  const result = checkIfNotRepeated('nameItem', name, list)
+  
+  if(!result) {
+    setError({ message: 'The name is repeated', type: 'error' });
+  }
+  
+  return result;
 };
+
+export const isIdNotRepeteadInList = (id, list) => checkIfNotRepeated('id', id, list);

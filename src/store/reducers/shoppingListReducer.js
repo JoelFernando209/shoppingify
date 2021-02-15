@@ -102,8 +102,19 @@ const setShoppingName = (state, action) => {
   }
 }
 
+const resetList = state => {
+  return {
+    ...state,
+    itemsList: {},
+    nameShoppingList: 'Shopping List',
+    isShoppingEmpty: true
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.RESET_LIST: return resetList(state)
+    
     case actionTypes.SET_SHOPPING_NAME: return setShoppingName(state, action)
     
     case actionTypes.DESACTIVATE_EMPTY_LIST: return desactivateEmptyList(state)

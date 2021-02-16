@@ -11,7 +11,7 @@ import ConfirmPopup from '../../../components/UI/ConfirmPopup/ConfirmPopup';
 import { isObjEmpty, isIdNotRepeteadInList } from '../../../utils/validation.utils';
 import { combineItemsInCategory } from '../../../utils/immutable.utils';
 import { validateClass } from '../../../utils/style.utils';
-import { setCurrentShoppingListInfo } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { setCurrentShoppingListInfo } from '../../../firebase/FirebaseUtils/firestore/shoppingListCurrent';
 
 import * as actions from '../../../store/actions/index';
 

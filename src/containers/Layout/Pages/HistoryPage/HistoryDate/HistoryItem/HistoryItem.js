@@ -5,7 +5,7 @@ import ArrowRight from '../../../../../../assets/images/right-arrow.svg';
 
 import classes from './HistoryItem.module.scss';
 
-const HistoryItem = ({ nameEvent, date, status }) => {
+const HistoryItem = ({ nameItem, date, status }) => {
   let statusStyle = {}
   
   if(status === 'completed') {
@@ -22,7 +22,7 @@ const HistoryItem = ({ nameEvent, date, status }) => {
   
   return (
     <div className={classes.HistoryItem}>
-      {nameEvent}
+      {nameItem}
       
       <div className={classes.Info}>
         <div className={classes.InfoDate}>

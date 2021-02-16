@@ -29,3 +29,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   background-color: #FAFAFE;
 }
+
+input, textarea, select, option {
+  font-family: inherit;
+}

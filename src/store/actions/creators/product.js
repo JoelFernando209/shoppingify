@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import { snapshotProducts, addItemDB, removeItemDB } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { snapshotProducts, addItemDB, removeItemDB } from '../../../firebase/FirebaseUtils/firestore/items';
 
 export const setProducts = snapshotProducts => {
   return {

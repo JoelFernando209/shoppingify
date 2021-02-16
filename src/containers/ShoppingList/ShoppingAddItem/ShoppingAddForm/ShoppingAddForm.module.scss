@@ -29,7 +29,7 @@
   border-radius: 1.5rem;
   opacity: .7;
   transition: all .3s;
-  font-family: inherit;
+  position: relative;
 
   &:focus {
     outline: none;
@@ -41,8 +41,23 @@
   }
 }
 
+.SetCategoryInput {
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  padding-left: 2rem;
+  border: none;
+  background-color: transparent;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
 .Textarea {
   height: 10rem;
   padding: 1rem;
-  font-family: inherit;
 }

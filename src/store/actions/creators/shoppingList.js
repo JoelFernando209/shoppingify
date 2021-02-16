@@ -1,5 +1,6 @@
 import * as actionTypes from '../actionTypes';
-import { addShoppingItemDB, getShoppingItemDB, getCurrentShoppingListName, changeCurrentShoppingListName, removeShoppingItem, deleteCurrentShoppingList } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { addShoppingItemDB, getShoppingItemDB, removeShoppingItem } from '../../../firebase/FirebaseUtils/firestore/shoppingListItems';
+import { getCurrentShoppingListName, changeCurrentShoppingListName, deleteCurrentShoppingList } from '../../../firebase/FirebaseUtils/firestore/shoppingListCurrent';
 import { setFuncWhenUserLoaded, getUidSync } from '../../../firebase/FirebaseUtils/firebase.auth';
 import { isShoppingEmpty } from '../../../utils/validation.utils';
 

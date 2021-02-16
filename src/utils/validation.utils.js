@@ -94,7 +94,8 @@ export const validateName = (username, setError) => {
 
 export const validateCategory = (category, setError) => {
   const validateOptions = {
-    required: true
+    required: true,
+    maxLength: 25
   };
   
   const [ isValid, errMessage ] = validateStr('category', category, validateOptions);

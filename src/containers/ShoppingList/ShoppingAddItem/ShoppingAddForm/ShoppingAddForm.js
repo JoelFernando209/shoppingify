@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { connect } from 'react-redux';
 
 import Input from '../../../../components/UI/Input/Input';
 
 import classes from './ShoppingAddForm.module.scss';
 
-const ShoppingAddForm = ({ style, setName, setNote, setImage, setCategory, name, note, image, category }) => {
+const ShoppingAddForm = ({ style, setName, setNote, setImage, setCategory, name, note, image, category, products }) => {
+  const inputTextCategoryRef = useRef(null);
+  
+  const onFocusTextCategory = () => {
+    inputTextCategoryRef.current.style.opacity = '1';
+  };
+  
+  const setCategorySelect = event => {
+    setCategory(event);
+    
+    inputTextCategoryRef.current.style.opacity = '0';
+    inputTextCategoryRef.current.value = '';
+  };
+  
+  const onChangeCategory = event => {
+    if(event.target.value.trim().length > 0) {
+      setCategory(event)
+    }
+  };
+  
+  const categoriesNames = Object.keys(products);
+  
+  const categories = categoriesNames.map(name => <option key={name}>{name}</option>)
   
   return (
     <form className={classes.FormInput}>
@@ -25,10 +48,22 @@ const ShoppingAddForm = ({ style, setName, setNote, setImage, setCategory, name,
       <Input label='Image (optional)' change={setImage} valueD={image} placeholder='Enter a url...' type='text' />
       
       <label className={classes.LabelInput}>
-        <select onChange={setCategory} value={category} name='category' className={classes.InputAdd}>
+        <input
+          type='text'
+          onFocus={onFocusTextCategory}
+          onChange={onChangeCategory}
+          className={classes.SetCategoryInput}
+          ref={inputTextCategoryRef}
+        />
+        
+        <select
+          onChange={setCategorySelect}
+          value={category}
+          name='category'
+          className={classes.InputAdd}
+        >
           <option></option>
-          <option>Fruit and Vegetables</option>
-          <option>Meat and Fish</option>
+          {categories}
         </select>
         
         <div className={classes.TitleLabel}>Category</div>
@@ -37,4 +72,8 @@ const ShoppingAddForm = ({ style, setName, setNote, setImage, setCategory, name,
   );
 };
 
-export default ShoppingAddForm;
+const mapStateToProps = state => ({
+  products: state.products.products
+});
+
+export default connect(mapStateToProps)(ShoppingAddForm);

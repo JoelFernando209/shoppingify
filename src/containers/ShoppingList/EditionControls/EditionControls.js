@@ -9,7 +9,8 @@ import ConfirmPopup from '../../../components/UI/ConfirmPopup/ConfirmPopup';
 import * as actions from '../../../store/actions/index';
 
 import { setStateMethods } from '../../../utils/style.utils';
-import { deleteAllShoppingListItems, setListInShoppingHistory } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { deleteAllShoppingListItems } from '../../../firebase/FirebaseUtils/firestore/shoppingListItems';
+import { setListInShoppingHistory } from '../../../firebase/FirebaseUtils/firestore/shoppingListHistory';
 
 const EditionControls = ({ statusEdition, onDoneList, itemsList }) => {
   const [ cancelStatus, setCancelStatus ] = useState(false);

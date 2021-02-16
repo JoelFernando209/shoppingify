@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ConfirmPopup {
   position: fixed;
   top: 50%;
@@ -13,6 +15,22 @@
   
   display: flex;
   flex-direction: column;
+  
+  @include respond(tablet) {
+    width: 40%;
+  }
+  
+  @include respond(phone) {
+    width: 50%;
+  }
+  
+  @include respond(sm-phone) {
+    width: 70%;
+  }
+  
+  @include respond(mini-phone) {
+    width: 90%;
+  }
 }
 
 .CancelIcon {
@@ -39,5 +57,9 @@
   
   & > * {
     width: 48%;
+  }
+  
+  @include respond(sm-phone) {
+    width: 70%;
   }
 }

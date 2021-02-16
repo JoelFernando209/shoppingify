@@ -5,7 +5,7 @@ import classes from './ShoppingItemCount.module.scss';
 import ShoppingItemNormal from './ShoppingItemNormal/ShoppingItemNormal';
 import ShoppingItemModify from './ShoppingItemModify/ShoppingItemModify';
 
-import { changePieceInShopping } from '../../../firebase/FirebaseUtils/firebase.firestore';
+import { changePieceInShopping } from '../../../firebase/FirebaseUtils/firestore/shoppingListItems';
 
 const ShoppingItemCount = ({ pieces, idItem, deleteItemHandler }) => {
   const [ modifyStatus, setModifyStatus ] = useState(false);
@@ -14,7 +14,7 @@ const ShoppingItemCount = ({ pieces, idItem, deleteItemHandler }) => {
   const addPiece = () => {
     setStatePieces(statePieces + 1);
     
-    changePieceInShopping(idItem, statePieces+1)
+    changePieceInShopping(idItem, statePieces+1);
   };
   
   const substractPiece = () => {

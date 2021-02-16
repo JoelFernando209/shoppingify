@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import ShoppingAddForm from './ShoppingAddForm/ShoppingAddForm';
@@ -32,6 +32,8 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct, products }) =
   
   const setCategory = event => {
     setCategoryItem(event.target.value);
+    
+    console.log(event.target.value);
   }
   
   const submitAddItem = () => {
@@ -53,10 +55,6 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct, products }) =
       onSetProduct(itemInfo);
     }
   };
-  
-  useEffect(() => {
-    console.log('[ShoppingAddItem.js] renderized')
-  })
   
   const classesAdd = [classes.ShoppingAddItem];
   

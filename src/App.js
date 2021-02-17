@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from './containers/Layout/Layout';
 import ItemsPage from './containers/Layout/Pages/ItemsPage/ItemsPage';
 import HistoryPage from './containers/Layout/Pages/HistoryPage/HistoryPage';
 import StatisticsPage from './containers/Layout/Pages/StatisticsPage/StatisticsPage';
+import HistoryListInfo from './components/HistoryPage/HistoryListInfo/HistoryListInfo';
 
 import { openPopupBasedOnAuth } from './firebase/FirebaseUtils/firebase.auth';
 
@@ -42,7 +43,12 @@ const App = ({ onSetPopupStatus, onCheckAuth, onSetShoppingName }) => {
       currentInfoItem={currentInfoItem}
     >
       <Route exact path='/' render={() => <ItemsPage showInfoItem={showInfoItem} />} />
-      <Route path='/history' component={HistoryPage} />
+      
+      <Switch>
+        <Route path='/history/:nameList' component={HistoryListInfo} />
+        <Route path='/history' component={HistoryPage} />
+      </Switch>
+      
       <Route path='/statistics' component={StatisticsPage} />
     </Layout>
   );

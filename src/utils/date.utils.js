@@ -1,0 +1,1 @@
+export const formatHistoryDate = date => date.split(' ').slice(0, 4).join(' ');

@@ -26,3 +26,7 @@ export {
 export {
   checkAuth
 } from './creators/user';
+
+export {
+  setCurrentItem
+} from './creators/history';

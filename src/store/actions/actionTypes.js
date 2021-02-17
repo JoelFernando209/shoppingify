@@ -24,3 +24,7 @@ export const RESET_LIST = 'RESET_LIST';
 // user
 
 export const SET_AUTH = 'SET_AUTH';
+
+// history
+
+export const SET_CURRENT_ITEM = 'SET_CURRENT_ITEM';

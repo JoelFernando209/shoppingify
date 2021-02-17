@@ -4,7 +4,7 @@ const initialState = {
   popupStatus: false
 }
 
-const ingresarPopup = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.HIDE_LOG_POPUP:
       return {
@@ -23,4 +23,4 @@ const ingresarPopup = (state = initialState, action) => {
   }
 };
 
-export default ingresarPopup;
+export default reducer;

@@ -3,40 +3,50 @@ import React, { useState, useEffect } from 'react';
 import classes from './HistoryPage.module.scss';
 
 import HistoryDate from './HistoryDate/HistoryDate';
+import Spinner from '../../../../components/UI/Spinner/Spinner';
 
 import { getShoppingHistory } from '../../../../firebase/FirebaseUtils/firestore/shoppingListHistory';
+import { joinItemsByTheirMonth } from '../../../../utils/list.utils';
 
-const HistoryPage = () => {
+const HistoryPage = ({ history }) => {
   const [ historyPage, setHistoryPage ] = useState([]);
   
   useEffect(() => {
-    getShoppingHistory(collection => {
-      const result = [];
-      
-      collection.forEach(doc => {
-        result.push(doc.data())
+    if(!(historyPage.length)) {
+      getShoppingHistory(collection => {
+        const result = [];
+        
+        collection.forEach(doc => {
+          result.push(doc.data())
+        })
+        
+        setHistoryPage(result);
       })
-      
-      console.log(result);
-      
-      setHistoryPage(result);
-    })
+    }
   }, []);
   
-  let historyDates = null;
+  let historyDates = <Spinner />;
   
   if(historyPage.length) {
-    historyDates = historyPage.map((date, index) => {
-      return <HistoryDate key={index} date='August 2020' historyItemsArr={historyPage} />
+    const historyJoined = joinItemsByTheirMonth(historyPage);
+    const historyJoinedNames = Object.keys(historyJoined);
+    
+    historyDates = historyJoinedNames.map((name, index) => {
+      return <HistoryDate
+        key={name}
+        date={name}
+        historyItemsArr={historyJoined[name]}
+        historyPush={history.push}
+      />
     })
   }
   
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <div className={classes.HistoryTitle}>Shopping History</div>
       
       {historyDates}
-    </>
+    </div>
   )
 };
 

@@ -6,6 +6,7 @@ import ShoppingItemNormal from './ShoppingItemNormal/ShoppingItemNormal';
 import ShoppingItemModify from './ShoppingItemModify/ShoppingItemModify';
 
 import { changePieceInShopping } from '../../../firebase/FirebaseUtils/firestore/shoppingListItems';
+import { changePieceInShoppingCurrent } from '../../../firebase/FirebaseUtils/firestore/shoppingListCurrent';
 
 const ShoppingItemCount = ({ pieces, idItem, deleteItemHandler }) => {
   const [ modifyStatus, setModifyStatus ] = useState(false);
@@ -15,6 +16,8 @@ const ShoppingItemCount = ({ pieces, idItem, deleteItemHandler }) => {
     setStatePieces(statePieces + 1);
     
     changePieceInShopping(idItem, statePieces+1);
+    
+    changePieceInShoppingCurrent(idItem, statePieces+1);
   };
   
   const substractPiece = () => {
@@ -22,6 +25,8 @@ const ShoppingItemCount = ({ pieces, idItem, deleteItemHandler }) => {
       setStatePieces(statePieces - 1);
       
       changePieceInShopping(idItem, statePieces-1)
+      
+      changePieceInShoppingCurrent(idItem, statePieces-1);
     }
   };
   

@@ -2,6 +2,7 @@ import firebase from '../../firebaseConfig.js';
 import 'firebase/firestore';
 
 import { getUidSync } from '../firebase.auth';
+import { changePiecesOfItem } from '../../../utils/immutable.utils';
 
 const db = firebase.firestore();
 
@@ -102,4 +103,25 @@ export const deleteCurrentShoppingList = endFunc => {
     .doc(uidUser)
     .delete()
     .then(endFunc)
+};
+
+export const changePieceInShoppingCurrent = (idItem, amountPieces) => {
+  const uidUser = getUidSync();
+  
+  const docRef = db.collection('shoppingListCurrent').doc(uidUser)
+  
+  docRef
+    .get()
+    .then(doc => {
+      docRef
+        .update({
+          items: changePiecesOfItem(doc.data(), idItem, amountPieces)
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
 };

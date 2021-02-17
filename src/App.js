@@ -15,15 +15,18 @@ import * as actions from './store/actions/index';
 const App = ({ onSetPopupStatus, onCheckAuth, onSetShoppingName }) => {
   const [ infoItemStatus, setInfoItemStatus ] = useState(false);
   const [ currentInfoItem, setCurrentInfoItem ] = useState({});
+  const [ deleteButtonStatus, setDeleteButtonStatus ] = useState(true);
   
   const checkIfUserAuth = () => {
     openPopupBasedOnAuth(onSetPopupStatus)
   }
   
-  const showInfoItem = item => {
+  const showInfoItem = (item, deleteStatus) => {
     setInfoItemStatus(true);
     
     setCurrentInfoItem(item);
+    
+    setDeleteButtonStatus(deleteStatus);
   };
   
   const hideInfoItem = () => {
@@ -41,11 +44,12 @@ const App = ({ onSetPopupStatus, onCheckAuth, onSetShoppingName }) => {
       infoItemStatus={infoItemStatus}
       hideInfoItem={hideInfoItem}
       currentInfoItem={currentInfoItem}
+      deleteButtonStatus={deleteButtonStatus}
     >
       <Route exact path='/' render={() => <ItemsPage showInfoItem={showInfoItem} />} />
       
       <Switch>
-        <Route path='/history/:nameList' component={HistoryListInfo} />
+        <Route path='/history/:nameList' render={() => <HistoryListInfo showInfoItem={showInfoItem} />} />
         <Route path='/history' component={HistoryPage} />
       </Switch>
       

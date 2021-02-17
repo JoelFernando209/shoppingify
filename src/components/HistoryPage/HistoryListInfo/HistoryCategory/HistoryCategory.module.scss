@@ -1,0 +1,15 @@
+.HistoryCategory {
+  margin-bottom: 3rem;
+  
+  .Title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .CategoryItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 2rem;
+  }
+}

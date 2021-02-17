@@ -27,7 +27,18 @@ const inputEntries = [
   'noteItem'
 ];
 
-const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onDeleteItem, nameShopping, itemsList, onRemoveItemList, onDeleteItemList }) => {
+const InfoItem = ({
+  status,
+  hideInfoItemHandler,
+  currentInfoItem,
+  onAddItem,
+  onDeleteItem,
+  nameShopping,
+  itemsList,
+  onRemoveItemList,
+  onDeleteItemList,
+  deleteButtonStatus
+}) => {
   const [ confirmStatus, setConfirmStatus ] = useState(false);
   
   const activateConfirm = () => {
@@ -119,6 +130,7 @@ const InfoItem = ({ status, hideInfoItemHandler, currentInfoItem, onAddItem, onD
         <InfoControls
           clickedAdd={onAdditemAndCloseInfo.bind(null, currentInfoItem)}
           clickedDelete={activateConfirm}
+          deleteStatus={deleteButtonStatus}
         />
       </div>
     </>

@@ -9,7 +9,7 @@ import NotEmailAuthPopup from '../../components/NotEmailAuthPopup/NotEmailAuthPo
 import ShoppingAddItem from '../../containers/ShoppingList/ShoppingAddItem/ShoppingAddItem';
 import InfoItem from './InfoItem/InfoItem';
 
-const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => {
+const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem, deleteButtonStatus }) => {
   const [ addItemStatus, setAddItemStatus ] = useState(false);
   const [ authErr, setAuthErr ] = useState(null);
   const [ shoppingListPhone, setShoppingListPhone ] = useState(false);
@@ -51,7 +51,7 @@ const Layout = ({ children, infoItemStatus, hideInfoItem, currentInfoItem }) => 
       
       <ShoppingAddItem status={addItemStatus} toggleItemStatus={toggleItemStatusHandler} />
       
-      <InfoItem status={infoItemStatus} hideInfoItemHandler={hideInfoItem} currentInfoItem={currentInfoItem} />
+      <InfoItem status={infoItemStatus} hideInfoItemHandler={hideInfoItem} deleteButtonStatus={deleteButtonStatus} currentInfoItem={currentInfoItem} />
     </>
   )
 };

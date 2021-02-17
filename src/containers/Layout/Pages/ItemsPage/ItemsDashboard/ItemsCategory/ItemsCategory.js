@@ -7,7 +7,7 @@ import classes from './ItemsCategory.module.scss';
 const ItemsCategory = ({ titleCategory, arrItems, showInfoItemHandler }) => {
   
   const itemsProducts = arrItems.map(item => {
-    return <ItemsProduct key={item.id} nameProduct={item.nameItem} clicked={showInfoItemHandler.bind(null, item)} />
+    return <ItemsProduct key={item.id} nameProduct={item.nameItem} clicked={showInfoItemHandler.bind(null, item, true)} />
   })
   
   return (

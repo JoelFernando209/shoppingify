@@ -1,0 +1,24 @@
+.HistoryItem {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: darken(white, 6%);
+  }
+  
+  .Title {
+    margin-right: auto;
+  }
+  
+  .Pieces {
+    color: #F9A10A;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}

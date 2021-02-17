@@ -39,3 +39,37 @@ export const filterList = (searchword, list) => {
   
   return result;
 };
+
+export const changePiecesOfItem = (list, idItem, amountPieces) => {
+  let resultItems = { ...list.items };
+  const listNames = Object.keys(resultItems);
+  
+  listNames.forEach(listName => {
+    const currentItemsOfList = [ ...resultItems[listName].items ];
+    
+    const searchedItem = currentItemsOfList.find(item => item.id === idItem);
+    const searchedItemIndex = currentItemsOfList.findIndex(item => item.id === idItem);
+    
+    if(searchedItem && searchedItemIndex !== -1) {
+      const { categoryItem } = searchedItem;
+      
+      const resultArrItems = [ ...resultItems[categoryItem].items ];
+      
+      resultArrItems[searchedItemIndex] = {
+        ...resultArrItems[searchedItemIndex],
+        pieces: amountPieces
+      }
+      
+      resultItems = {
+        ...resultItems,
+        [categoryItem]: {
+          ...resultItems[categoryItem],
+          items: resultArrItems
+        }
+      }
+      
+    };
+  });
+  
+  return resultItems;
+};

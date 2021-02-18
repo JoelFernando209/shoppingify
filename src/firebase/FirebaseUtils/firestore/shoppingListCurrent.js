@@ -84,6 +84,12 @@ export const getCurrentShoppingListName = (user, unsubscribe, endFunc) => {
     })
 };
 
+export const getCurrentShoppingList = (user, unsubscribe) => {
+  return db.collection('shoppingListCurrent')
+    .doc(user.uid)
+    .get()
+};
+
 export const changeCurrentShoppingListName = (uid, name, endFunc) => {
   db.collection('shoppingListCurrent')
     .doc(uid)

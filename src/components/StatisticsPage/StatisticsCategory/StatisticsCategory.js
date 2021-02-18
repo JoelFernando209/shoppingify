@@ -4,15 +4,17 @@ import classes from './StatisticsCategory.module.scss';
 
 import StatisticsBar from './StatisticsBar/StatisticsBar';
 
-const StatisticsCategory = ({ nameCategory }) => {
+const StatisticsCategory = ({ nameCategory, colorBar, arrBar }) => {
+  const statisticsBars = arrBar.map(bar => {
+    return <StatisticsBar key={bar.name} titleBar={bar.name} percentageBar={bar.percentage} colorBar={colorBar} />
+  })
   
   return (
     <div>
       <div className={classes.TitleCategory}>{nameCategory}</div>
       
       <div className={classes.StatisticsBars}>
-        <StatisticsBar titleBar='Avocato' percentageBar='62' colorBar='#F9A109' />
-        <StatisticsBar titleBar='Avocato' percentageBar='62' colorBar='#F9A109' />
+        {statisticsBars}
       </div>
     </div>
   )

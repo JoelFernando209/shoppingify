@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/shoppingify/static/css/main.56f29815.chunk.css",
-    "main.js": "/shoppingify/static/js/main.0587167c.chunk.js",
-    "main.js.map": "/shoppingify/static/js/main.0587167c.chunk.js.map",
+    "main.js": "/shoppingify/static/js/main.f6799eab.chunk.js",
+    "main.js.map": "/shoppingify/static/js/main.f6799eab.chunk.js.map",
     "runtime-main.js": "/shoppingify/static/js/runtime-main.6fe9129e.js",
     "runtime-main.js.map": "/shoppingify/static/js/runtime-main.6fe9129e.js.map",
-    "static/js/2.42ce4a63.chunk.js": "/shoppingify/static/js/2.42ce4a63.chunk.js",
-    "static/js/2.42ce4a63.chunk.js.map": "/shoppingify/static/js/2.42ce4a63.chunk.js.map",
+    "static/js/2.8f66c957.chunk.js": "/shoppingify/static/js/2.8f66c957.chunk.js",
+    "static/js/2.8f66c957.chunk.js.map": "/shoppingify/static/js/2.8f66c957.chunk.js.map",
     "index.html": "/shoppingify/index.html",
     "static/css/main.56f29815.chunk.css.map": "/shoppingify/static/css/main.56f29815.chunk.css.map",
-    "static/js/2.42ce4a63.chunk.js.LICENSE.txt": "/shoppingify/static/js/2.42ce4a63.chunk.js.LICENSE.txt",
+    "static/js/2.8f66c957.chunk.js.LICENSE.txt": "/shoppingify/static/js/2.8f66c957.chunk.js.LICENSE.txt",
     "static/media/bottle-icon.d2e572da.svg": "/shoppingify/static/media/bottle-icon.d2e572da.svg",
     "static/media/calendar-icon.48bcfb78.svg": "/shoppingify/static/media/calendar-icon.48bcfb78.svg",
     "static/media/cart-icon.b304cf7c.svg": "/shoppingify/static/media/cart-icon.b304cf7c.svg",
@@ -26,8 +26,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.6fe9129e.js",
-    "static/js/2.42ce4a63.chunk.js",
+    "static/js/2.8f66c957.chunk.js",
     "static/css/main.56f29815.chunk.css",
-    "static/js/main.0587167c.chunk.js"
+    "static/js/main.f6799eab.chunk.js"
   ]
 }

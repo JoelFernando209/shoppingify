@@ -17,6 +17,8 @@ const ShoppingCategories = ({ itemNames, items, onActivateEmptyList, onDesactiva
         />
       )
     }
+    
+    return null;
   })
   
   return (

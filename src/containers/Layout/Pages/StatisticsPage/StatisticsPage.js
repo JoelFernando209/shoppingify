@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import classes from './StatisticsPage.module.scss';
 
 import StatisticsCategory from '../../../../components/StatisticsPage/StatisticsCategory/StatisticsCategory';
-import StatisticsGraph from '../../../../components/StatisticsPage/StatisticsGraph/StatisticsGraph';
 import Spinner from '../../../../components/UI/Spinner/Spinner';
 
 import { setFuncWhenUserLoaded } from '../../../../firebase/FirebaseUtils/firebase.auth';
@@ -47,7 +46,7 @@ const StatisticsPage = () => {
           console.log(err.message);
         })
     })
-  }, [getCurrentShoppingList, getShoppingHistory, getStatisticsBarItems]);
+  }, []);
   
   let statisticscategories = <Spinner />;
   

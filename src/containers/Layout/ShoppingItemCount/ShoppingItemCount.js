@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import classes from './ShoppingItemCount.module.scss';
-
 import ShoppingItemNormal from './ShoppingItemNormal/ShoppingItemNormal';
 import ShoppingItemModify from './ShoppingItemModify/ShoppingItemModify';
 

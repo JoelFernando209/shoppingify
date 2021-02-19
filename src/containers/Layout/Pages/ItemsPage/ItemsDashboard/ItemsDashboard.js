@@ -21,6 +21,8 @@ const ItemsDashboard = ({ categories, showInfoItem, auth, searchProducts }) => {
           />
         )
       }
+      
+      return null;
     })
   };
 

@@ -20,7 +20,7 @@ export const combineItemsInCategory = (item, objToCombine) => {
   }
 };
 
-const filterSimilarItems = (searchword, itemsArr) => itemsArr.filter(item => item.nameItem.includes(searchword));
+const filterSimilarItems = (searchword, itemsArr) => itemsArr.filter(item => item.nameItem.toLowerCase().includes(searchword.toLowerCase()));
 
 export const filterList = (searchword, list) => {
   const listNames = Object.keys(list);

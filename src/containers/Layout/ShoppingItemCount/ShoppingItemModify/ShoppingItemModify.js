@@ -9,7 +9,6 @@ import classes from './ShoppingItemModify.module.scss';
 
 import * as actions from '../../../../store/actions/index';
 
-import { removeShoppingItem } from '../../../../firebase/FirebaseUtils/firestore/shoppingListItems';
 import { deleteCurrentShoppingListItem } from '../../../../firebase/FirebaseUtils/firestore/shoppingListCurrent';
 
 const ShoppingItemModify = ({ children, clicked, onAddPiece, onSubstractPiece, onDeleteItem, idItem, onRemoveItemListDB }) => {

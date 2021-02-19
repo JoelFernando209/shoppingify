@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from './containers/Layout/Layout';
@@ -47,13 +47,15 @@ const App = ({ onSetPopupStatus, onCheckAuth, onSetShoppingName }) => {
       deleteButtonStatus={deleteButtonStatus}
     >
       <Route exact path='/' render={() => <ItemsPage showInfoItem={showInfoItem} />} />
-      
+
       <Switch>
         <Route path='/history/:nameList' render={() => <HistoryListInfo showInfoItem={showInfoItem} />} />
         <Route path='/history' component={HistoryPage} />
       </Switch>
       
       <Route path='/statistics' component={StatisticsPage} />
+      
+      <Redirect to='/' />
     </Layout>
   );
 }

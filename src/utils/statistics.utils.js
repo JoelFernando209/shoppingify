@@ -85,9 +85,6 @@ export const getStatisticsBarItems = (currentShopping, shoppingHistory) => {
   
   percentageItems.sort((a, b) => parseFloat(b.percentage) - parseFloat(a.percentage));
   
-  console.log(percentageItems.slice(0, 3));
-  console.log(joinedLists);
-  
   return percentageItems.slice(0, 3);
 };
 
@@ -101,8 +98,6 @@ export const getStatisticsBarCategories = (currentShopping, shoppingHistory) => 
   const percentageCategories = setPercentageOfEveryItem(amountAllCategories, amountOfEveryCategory);
   
   percentageCategories.sort((a, b) => parseFloat(b.percentage) - parseFloat(a.percentage));
-  
-  console.log(percentageCategories.slice(0, 3));
   
   return percentageCategories.slice(0, 3);
 };

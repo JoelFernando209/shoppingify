@@ -12,6 +12,8 @@ const HistoryPage = ({ history }) => {
   const [ historyPage, setHistoryPage ] = useState([]);
   
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     if(!(historyPage.length)) {
       getShoppingHistory(collection => {
         const result = [];

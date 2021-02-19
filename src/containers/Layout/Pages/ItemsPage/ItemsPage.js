@@ -28,6 +28,7 @@ const ItemsPage = ({ onSetProducts, showInfoItem, productsList }) => {
   }
   
   useEffect(() => {
+    window.scrollTo(0, 0);
     onSetProducts();
   }, [onSetProducts])
   

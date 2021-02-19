@@ -32,8 +32,6 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct, products }) =
   
   const setCategory = event => {
     setCategoryItem(event.target.value);
-    
-    console.log(event.target.value);
   }
   
   const submitAddItem = () => {
@@ -53,6 +51,8 @@ const ShoppingAddItem = ({ status, toggleItemStatus, onSetProduct, products }) =
       };
       
       onSetProduct(itemInfo);
+      
+      setCategoryItem('');
     }
   };
   

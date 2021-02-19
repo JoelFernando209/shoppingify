@@ -15,6 +15,7 @@ export {
   activateEmptyList,
   desactivateEmptyList,
   saveItemList,
+  saveItemListNoInfo,
   deleteItemList,
   removeItemListDB,
   getItemList,

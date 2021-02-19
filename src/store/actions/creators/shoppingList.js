@@ -32,6 +32,17 @@ export const saveItemList = (item, idItem) => {
   };
 }
 
+export const saveItemListNoInfo = (item, idItem) => {
+  return (dispatch, getState) => {
+    addShoppingItemDB(item, idItem)
+      .then(() => dispatch(addItemList(item)))
+      .catch(err => {
+        console.log(err.message)
+      })
+  };
+}
+
+
 export const deleteItemList = item => ({
   type: actionTypes.DELETE_ITEM_LIST,
   item

@@ -1,13 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ItemsProduct from './ItemsProduct/ItemsProduct';
 
 import classes from './ItemsCategory.module.scss';
 
-const ItemsCategory = ({ titleCategory, arrItems, showInfoItemHandler }) => {
-  
+const ItemsCategory = ({ titleCategory, arrItems, showInfoItemHandler, onAddItem, itemsList }) => {
   const itemsProducts = arrItems.map(item => {
-    return <ItemsProduct key={item.id} nameProduct={item.nameItem} clicked={showInfoItemHandler.bind(null, item, true)} />
+    return <ItemsProduct
+      key={item.id}
+      nameProduct={item.nameItem}
+      clicked={showInfoItemHandler.bind(null, item, true)}
+    />
   })
   
   return (
@@ -20,5 +24,6 @@ const ItemsCategory = ({ titleCategory, arrItems, showInfoItemHandler }) => {
     </div>
   )
 };
+
 
 export default ItemsCategory;

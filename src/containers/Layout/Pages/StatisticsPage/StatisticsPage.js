@@ -23,13 +23,24 @@ const StatisticsPage = () => {
           const currentShopping = doc.data();
           
           getShoppingHistory(shoppingHistoryCol => {
-            const historyData = shoppingHistoryCol.docs.map(doc => doc.data());
-            
-            const statisticsItems = getStatisticsBarItems(currentShopping, historyData);
-            const statisticsCategories = getStatisticsBarCategories(currentShopping, historyData);
-            
-            setStatisticsItems(statisticsItems);
-            setStatisticsCategories(statisticsCategories);
+            if(!shoppingHistoryCol.empty) {
+              const historyData = shoppingHistoryCol.docs.map(doc => doc.data());
+              
+              const statisticsItems = getStatisticsBarItems(currentShopping, historyData);
+              const statisticsCategories = getStatisticsBarCategories(currentShopping, historyData);
+              
+              setStatisticsItems(statisticsItems);
+              setStatisticsCategories(statisticsCategories);
+            } else {
+              setStatisticsItems([{
+                name: 'Not defined',
+                percentage: '0'
+              }]);
+              setStatisticsCategories([{
+                name: 'Not defined',
+                percentage: '0'
+              }]);
+            }
           });
         })
         .catch(err => {
@@ -61,12 +72,6 @@ const StatisticsPage = () => {
     <>
       <div className={classes.StatsGrid}>
         {statisticscategories}
-      </div>
-      
-      <div className={classes.MonthlyGraph}>
-        <h2>Monthly Summary</h2>
-        
-        <StatisticsGraph />
       </div>
     </>
   );

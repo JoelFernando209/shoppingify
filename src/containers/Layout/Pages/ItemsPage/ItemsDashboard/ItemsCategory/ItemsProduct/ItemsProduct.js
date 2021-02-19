@@ -8,7 +8,6 @@ const ItemsProduct = ({ nameProduct, clicked }) => {
   return (
     <div className={classes.ItemsProduct} onClick={clicked}>
       {nameProduct}
-      <img src={AddIcon} alt='Add' className={classes.AddIcon} />
     </div>
   )
 };

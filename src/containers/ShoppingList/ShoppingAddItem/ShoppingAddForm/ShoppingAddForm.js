@@ -54,6 +54,7 @@ const ShoppingAddForm = ({ style, setName, setNote, setImage, setCategory, name,
           onChange={onChangeCategory}
           className={classes.SetCategoryInput}
           ref={inputTextCategoryRef}
+          value={category}
         />
         
         <select

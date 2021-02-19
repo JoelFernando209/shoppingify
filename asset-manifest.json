@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/shoppingify/static/css/main.56f29815.chunk.css",
+    "main.js": "/shoppingify/static/js/main.71f0e91c.chunk.js",
+    "main.js.map": "/shoppingify/static/js/main.71f0e91c.chunk.js.map",
+    "runtime-main.js": "/shoppingify/static/js/runtime-main.6fe9129e.js",
+    "runtime-main.js.map": "/shoppingify/static/js/runtime-main.6fe9129e.js.map",
+    "static/js/2.8d19ac29.chunk.js": "/shoppingify/static/js/2.8d19ac29.chunk.js",
+    "static/js/2.8d19ac29.chunk.js.map": "/shoppingify/static/js/2.8d19ac29.chunk.js.map",
+    "index.html": "/shoppingify/index.html",
+    "static/css/main.56f29815.chunk.css.map": "/shoppingify/static/css/main.56f29815.chunk.css.map",
+    "static/js/2.8d19ac29.chunk.js.LICENSE.txt": "/shoppingify/static/js/2.8d19ac29.chunk.js.LICENSE.txt",
+    "static/media/bottle-icon.d2e572da.svg": "/shoppingify/static/media/bottle-icon.d2e572da.svg",
+    "static/media/calendar-icon.48bcfb78.svg": "/shoppingify/static/media/calendar-icon.48bcfb78.svg",
+    "static/media/cart-icon.b304cf7c.svg": "/shoppingify/static/media/cart-icon.b304cf7c.svg",
+    "static/media/create-icon.249fb4c7.svg": "/shoppingify/static/media/create-icon.249fb4c7.svg",
+    "static/media/delete-icon.6eab56bc.svg": "/shoppingify/static/media/delete-icon.6eab56bc.svg",
+    "static/media/history-icon.b7a98b57.svg": "/shoppingify/static/media/history-icon.b7a98b57.svg",
+    "static/media/list-icon.c7396bc3.svg": "/shoppingify/static/media/list-icon.c7396bc3.svg",
+    "static/media/logo.eb09cb08.svg": "/shoppingify/static/media/logo.eb09cb08.svg",
+    "static/media/opened_email.4a704ec7.svg": "/shoppingify/static/media/opened_email.4a704ec7.svg",
+    "static/media/person-cart.2b324963.svg": "/shoppingify/static/media/person-cart.2b324963.svg",
+    "static/media/right-arrow.5534d0dc.svg": "/shoppingify/static/media/right-arrow.5534d0dc.svg",
+    "static/media/search-icon.bc2178ae.svg": "/shoppingify/static/media/search-icon.bc2178ae.svg",
+    "static/media/statistics-icon.fe2af0ed.svg": "/shoppingify/static/media/statistics-icon.fe2af0ed.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6fe9129e.js",
+    "static/js/2.8d19ac29.chunk.js",
+    "static/css/main.56f29815.chunk.css",
+    "static/js/main.71f0e91c.chunk.js"
+  ]
+}
